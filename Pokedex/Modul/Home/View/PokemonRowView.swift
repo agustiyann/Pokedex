@@ -19,7 +19,7 @@ struct PokemonRowView: View {
       content
     }
     .frame(width: UIScreen.main.bounds.width - 32, height: 250)
-    .background(Color.gray)
+    .background(Color.random)
     .cornerRadius(30)
   }
 
@@ -40,6 +40,7 @@ extension PokemonRowView {
       .scaledToFit()
       .frame(width: 200)
       .cornerRadius(30)
+      .shadow(color: .black, radius: 5, x: 0, y: 5)
       .padding(.top)
   }
 
@@ -49,6 +50,7 @@ extension PokemonRowView {
         .font(.title)
         .foregroundColor(.white)
         .bold()
+        .shadow(color: .black, radius: 5, x: 0, y: 0)
     }.padding(
       EdgeInsets(
         top: 0,

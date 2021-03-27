@@ -16,6 +16,7 @@
 		CF38D8ED260F6FA600307225 /* InfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF38D8EC260F6FA600307225 /* InfoPresenter.swift */; };
 		CF38D8F5260F725B00307225 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF38D8F4260F725B00307225 /* HomeRouter.swift */; };
 		CF38D8FB260F72FF00307225 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF38D8FA260F72FF00307225 /* InfoView.swift */; };
+		CF38D90F260F8A4200307225 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF38D90E260F8A4200307225 /* Color+Ext.swift */; };
 		CFAE5573260F0D7800F220FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5572260F0D7800F220FF /* AppDelegate.swift */; };
 		CFAE5575260F0D7800F220FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5574260F0D7800F220FF /* SceneDelegate.swift */; };
 		CFAE5577260F0D7800F220FF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5576260F0D7800F220FF /* ContentView.swift */; };
@@ -63,6 +64,7 @@
 		CF38D8EC260F6FA600307225 /* InfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPresenter.swift; sourceTree = "<group>"; };
 		CF38D8F4260F725B00307225 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
 		CF38D8FA260F72FF00307225 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		CF38D90E260F8A4200307225 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
 		CFAE556F260F0D7800F220FF /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFAE5572260F0D7800F220FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFAE5574260F0D7800F220FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 			isa = PBXGroup;
 			children = (
 				CFAE55DC260F1AE600F220FF /* CustomeError+Ext.swift */,
+				CF38D90E260F8A4200307225 /* Color+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				CFAE55D1260F17B900F220FF /* RemoteDataSource.swift in Sources */,
 				CFAE5610260F2C8500F220FF /* HomePresenter.swift in Sources */,
 				CFAE55E5260F1CE400F220FF /* PokemonRepository.swift in Sources */,
+				CF38D90F260F8A4200307225 /* Color+Ext.swift in Sources */,
 				CFAE55D7260F18F200F220FF /* APICall.swift in Sources */,
 				CF38D8B3260F31EF00307225 /* Injection.swift in Sources */,
 				CF38D8ED260F6FA600307225 /* InfoPresenter.swift in Sources */,
