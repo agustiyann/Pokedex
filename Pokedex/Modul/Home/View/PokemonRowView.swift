@@ -14,7 +14,7 @@ struct PokemonRowView: View {
 
   var body: some View {
     VStack {
-      imageCategory
+      imagePokemon
       content
     }
     .frame(width: UIScreen.main.bounds.width - 32, height: 250)
@@ -26,7 +26,7 @@ struct PokemonRowView: View {
 
 extension PokemonRowView {
 
-  var imageCategory: some View {
+  var imagePokemon: some View {
     WebImage(url: URL(string: self.pokemon.img))
       .resizable()
       .indicator(.activity)

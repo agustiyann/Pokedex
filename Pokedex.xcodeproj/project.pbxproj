@@ -34,6 +34,7 @@
 		CFAE5608260F2B6200F220FF /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5607260F2B6200F220FF /* HomeInteractor.swift */; };
 		CFAE5610260F2C8500F220FF /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE560F260F2C8500F220FF /* HomePresenter.swift */; };
 		CFAE5615260F2E4600F220FF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5614260F2E4600F220FF /* HomeView.swift */; };
+		CFDDDDE0260FC1E200F709C3 /* PokemonTypeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDDDDDF260FC1E200F709C3 /* PokemonTypeColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +87,7 @@
 		CFAE5607260F2B6200F220FF /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		CFAE560F260F2C8500F220FF /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		CFAE5614260F2E4600F220FF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		CFDDDDDF260FC1E200F709C3 /* PokemonTypeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTypeColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,6 +321,7 @@
 		CFAE55F8260F287E00F220FF /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CFDDDDDF260FC1E200F709C3 /* PokemonTypeColor.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -546,6 +549,7 @@
 				CFAE55D7260F18F200F220FF /* APICall.swift in Sources */,
 				CF38D8B3260F31EF00307225 /* Injection.swift in Sources */,
 				CF38D8ED260F6FA600307225 /* InfoPresenter.swift in Sources */,
+				CFDDDDE0260FC1E200F709C3 /* PokemonTypeColor.swift in Sources */,
 				CFAE5573260F0D7800F220FF /* AppDelegate.swift in Sources */,
 				CF38D8FB260F72FF00307225 /* InfoView.swift in Sources */,
 				CFAE5575260F0D7800F220FF /* SceneDelegate.swift in Sources */,
@@ -727,7 +731,7 @@
 				DEVELOPMENT_TEAM = KRF6V32MMS;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Pokedex/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -749,7 +753,7 @@
 				DEVELOPMENT_TEAM = KRF6V32MMS;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Pokedex/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

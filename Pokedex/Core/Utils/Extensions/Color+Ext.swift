@@ -17,4 +17,19 @@ extension Color {
     )
   }
 
+  static func backgroundType(type: String) -> Color {
+    switch type {
+    case "Grass": return .green
+    case "Fire": return .red
+    case "Poison", "bug": return .purple
+    case "Water": return .blue
+    case "Electric": return .yellow
+    case "Psychic": return .purple
+    case "Normal": return .orange
+    case "Flying": return .blue
+    case "Fairy": return .pink
+    default: return .green
+    }
+  }
+
 }
