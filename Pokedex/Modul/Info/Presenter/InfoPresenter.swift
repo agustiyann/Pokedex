@@ -11,30 +11,13 @@ class InfoPresenter: ObservableObject {
 
   private let infoUseCase: InfoUseCase
 
-  @Published var pokemon: PokemonInfoModel?
+  @Published var pokemon: PokemonModel
   @Published var errorMessage = ""
   @Published var loadingState = false
 
   init(infoUseCase: InfoUseCase) {
     self.infoUseCase = infoUseCase
-  }
-
-  func getPokemonInfo(id: Int) {
-    loadingState = true
-    infoUseCase.getPokemonInfo(id: id) { result in
-      switch result {
-      case .success(let pokemon):
-        DispatchQueue.main.async {
-          self.loadingState = false
-          self.pokemon = pokemon
-        }
-      case .failure(let error):
-        DispatchQueue.main.async {
-          self.loadingState = false
-          self.errorMessage = error.localizedDescription
-        }
-      }
-    }
+    pokemon = infoUseCase.getPokemonInfo()
   }
 
 }

@@ -8,21 +8,21 @@
 import Foundation
 
 protocol InfoUseCase {
-  func getPokemonInfo(id: Int, completion: @escaping (Result<PokemonInfoModel, Error>) -> Void)
+  func getPokemonInfo() -> PokemonModel
 }
 
 class InfoInteractor: InfoUseCase {
 
   private let repository: PokemonRepositoryProtocol
+  private let pokemon: PokemonModel
 
-  required init(repository: PokemonRepositoryProtocol) {
+  required init(repository: PokemonRepositoryProtocol, pokemon: PokemonModel) {
     self.repository = repository
+    self.pokemon = pokemon
   }
 
-  func getPokemonInfo(id: Int, completion: @escaping (Result<PokemonInfoModel, Error>) -> Void) {
-    repository.getPokemonInfo(id: id) { result in
-      completion(result)
-    }
+  func getPokemonInfo() -> PokemonModel {
+    return pokemon
   }
 
 }

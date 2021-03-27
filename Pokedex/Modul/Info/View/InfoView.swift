@@ -10,7 +10,6 @@ import SwiftUI
 struct InfoView: View {
 
   @ObservedObject var presenter: InfoPresenter
-  var id: Int
 
   var body: some View {
     ZStack {
@@ -21,14 +20,11 @@ struct InfoView: View {
       } else {
         ScrollView(.vertical) {
           VStack {
-            Text(self.presenter.pokemon?.name ?? "Unknow")
-            Text(String(self.presenter.pokemon?.height ?? 0))
+            Text(self.presenter.pokemon.name)
+            Text(String(self.presenter.pokemon.height))
           }
         }
       }
-    }
-    .onAppear {
-      self.presenter.getPokemonInfo(id: id)
     }
   }
 

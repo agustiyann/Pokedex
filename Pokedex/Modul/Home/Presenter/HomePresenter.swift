@@ -39,10 +39,10 @@ class HomePresenter: ObservableObject {
   }
 
   func linkBuilder<Content: View>(
-    for id: Int,
+    for pokemon: PokemonModel,
     @ViewBuilder content: () -> Content
   ) -> some View {
-    NavigationLink(destination: router.makeInfoView(for: id)) { content() }
+    NavigationLink(destination: router.makeInfoView(for: pokemon)) { content() }
   }
 
 }

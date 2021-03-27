@@ -12,5 +12,12 @@ struct PokemonsResponse: Decodable {
 }
 
 struct PokemonResponse: Decodable {
+  let id: Int?
   let name: String?
+  let img: String?
+  let height: String?
+  let weight: String?
+  let attack: Int?
+  let defense: Int?
+  let type: [String]
 }

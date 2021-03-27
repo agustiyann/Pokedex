@@ -11,7 +11,6 @@ import SDWebImageSwiftUI
 struct PokemonRowView: View {
 
   var pokemon: PokemonModel
-  var index: Int
 
   var body: some View {
     VStack {
@@ -23,17 +22,12 @@ struct PokemonRowView: View {
     .cornerRadius(30)
   }
 
-  private func setImageUrl(for indexImage: Int) -> String {
-    let imagePathUrl = "https://pokeres.bastionbot.org/images/pokemon/"
-    return "\(imagePathUrl)\(indexImage).png"
-  }
-
 }
 
 extension PokemonRowView {
 
   var imageCategory: some View {
-    WebImage(url: URL(string: self.setImageUrl(for: self.index)))
+    WebImage(url: URL(string: self.pokemon.img))
       .resizable()
       .indicator(.activity)
       .transition(.fade(duration: 0.5))
@@ -65,7 +59,16 @@ extension PokemonRowView {
 
 struct PokemonRowView_Previews: PreviewProvider {
   static var previews: some View {
-    let pokemon = PokemonModel(name: "bulbasaur")
-    PokemonRowView(pokemon: pokemon, index: 1)
+    let pokemon = PokemonModel(
+      id: 1,
+      name: "Bulbasaur",
+      img: "https://pokeres.bastionbot.org/images/pokemon/1.png",
+      height: "1 m",
+      weight: "10 kg",
+      attack: 70,
+      defense: 80,
+      type: ["Grass", "Poison"]
+    )
+    PokemonRowView(pokemon: pokemon)
   }
 }

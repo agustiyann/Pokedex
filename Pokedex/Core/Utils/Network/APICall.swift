@@ -9,7 +9,7 @@ import Foundation
 
 struct API {
 
-  static let baseUrl = "https://pokeapi.co/api/v2/"
+  static let baseUrl = "https://gist.githubusercontent.com/agustiyann/64c62e1d7affbdfd637123bab52f11e6/raw/"
 
 }
 
@@ -23,12 +23,10 @@ enum Endpoints {
 
   enum Gets: Endpoint {
     case list
-    case info
 
     public var url: String {
       switch self {
-      case .list: return "\(API.baseUrl)pokemon?limit=20&offset=0"
-      case .info: return "\(API.baseUrl)pokemon/"
+      case .list: return "\(API.baseUrl)ff543949312e373927dc8dfe0dc9e5a0a747378d/pokemon.json"
       }
     }
   }

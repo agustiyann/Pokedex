@@ -9,10 +9,10 @@ import SwiftUI
 
 class HomeRouter {
 
-  func makeInfoView(for id: Int) -> some View {
-    let infoUseCase = Injection.init().provideInfo()
+  func makeInfoView(for pokemon: PokemonModel) -> some View {
+    let infoUseCase = Injection.init().provideInfo(pokemon: pokemon)
     let presenter = InfoPresenter(infoUseCase: infoUseCase)
-    return InfoView(presenter: presenter, id: id)
+    return InfoView(presenter: presenter)
   }
 
 }

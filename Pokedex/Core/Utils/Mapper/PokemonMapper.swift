@@ -11,15 +11,17 @@ final class PokemonMapper {
 
   static func mapPokemonResponsesToDomains(input pokemonResponses: [PokemonResponse]) -> [PokemonModel] {
     return pokemonResponses.map { result in
-      return PokemonModel(name: result.name ?? "Unknow")
+      return PokemonModel(
+        id: result.id ?? 0,
+        name: result.name ?? "Unknow",
+        img: result.img ?? "Unknow",
+        height: result.height ?? "Unknow",
+        weight: result.weight ?? "Unknow",
+        attack: result.attack ?? 0,
+        defense: result.defense ?? 0,
+        type: result.type
+      )
     }
-  }
-
-  static func mapPokemonInfoResponseToDomain(input pokemonResponse: PokemonInfoResponse) -> PokemonInfoModel {
-    return PokemonInfoModel(id: pokemonResponse.id ?? 0,
-                            name: pokemonResponse.name ?? "Unknow",
-                            height: pokemonResponse.height ?? 0,
-                            weight: pokemonResponse.weight ?? 0)
   }
 
 }
