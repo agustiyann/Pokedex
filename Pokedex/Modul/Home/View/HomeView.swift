@@ -22,7 +22,7 @@ struct HomeView: View {
         ScrollView(.vertical, showsIndicators: false) {
           ForEach(self.presenter.pokemonList.indices) { index in
             ZStack {
-              Text(self.presenter.pokemonList[index].name)
+              PokemonRowView(pokemon: self.presenter.pokemonList[index], index: index + 1)
             }
           }
         }
