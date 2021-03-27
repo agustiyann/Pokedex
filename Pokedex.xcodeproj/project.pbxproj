@@ -10,7 +10,12 @@
 		CF38D8B3260F31EF00307225 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF38D8B2260F31EF00307225 /* Injection.swift */; };
 		CF38D8B8260F3AFF00307225 /* PokemonRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF38D8B7260F3AFF00307225 /* PokemonRowView.swift */; };
 		CF38D8BE260F3B6B00307225 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = CF38D8BD260F3B6B00307225 /* SDWebImageSwiftUI */; };
-		CF38D8C3260F406800307225 /* UIImage+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF38D8C2260F406800307225 /* UIImage+Ext.swift */; };
+		CF38D8D9260F634700307225 /* PokemonInfoResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF38D8D8260F634700307225 /* PokemonInfoResponse.swift */; };
+		CF38D8E1260F68B900307225 /* PokemonInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF38D8E0260F68B900307225 /* PokemonInfoModel.swift */; };
+		CF38D8E6260F6C6700307225 /* InfoInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF38D8E5260F6C6700307225 /* InfoInteractor.swift */; };
+		CF38D8ED260F6FA600307225 /* InfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF38D8EC260F6FA600307225 /* InfoPresenter.swift */; };
+		CF38D8F5260F725B00307225 /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF38D8F4260F725B00307225 /* HomeRouter.swift */; };
+		CF38D8FB260F72FF00307225 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF38D8FA260F72FF00307225 /* InfoView.swift */; };
 		CFAE5573260F0D7800F220FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5572260F0D7800F220FF /* AppDelegate.swift */; };
 		CFAE5575260F0D7800F220FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5574260F0D7800F220FF /* SceneDelegate.swift */; };
 		CFAE5577260F0D7800F220FF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5576260F0D7800F220FF /* ContentView.swift */; };
@@ -27,7 +32,7 @@
 		CFAE55E5260F1CE400F220FF /* PokemonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE55E4260F1CE400F220FF /* PokemonRepository.swift */; };
 		CFAE55EB260F244900F220FF /* PokemonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE55EA260F244900F220FF /* PokemonModel.swift */; };
 		CFAE55F4260F26AE00F220FF /* PokemonMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE55F3260F26AE00F220FF /* PokemonMapper.swift */; };
-		CFAE5608260F2B6200F220FF /* HomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5607260F2B6200F220FF /* HomeUseCase.swift */; };
+		CFAE5608260F2B6200F220FF /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5607260F2B6200F220FF /* HomeInteractor.swift */; };
 		CFAE5610260F2C8500F220FF /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE560F260F2C8500F220FF /* HomePresenter.swift */; };
 		CFAE5615260F2E4600F220FF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5614260F2E4600F220FF /* HomeView.swift */; };
 /* End PBXBuildFile section */
@@ -52,7 +57,12 @@
 /* Begin PBXFileReference section */
 		CF38D8B2260F31EF00307225 /* Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injection.swift; sourceTree = "<group>"; };
 		CF38D8B7260F3AFF00307225 /* PokemonRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonRowView.swift; sourceTree = "<group>"; };
-		CF38D8C2260F406800307225 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
+		CF38D8D8260F634700307225 /* PokemonInfoResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonInfoResponse.swift; sourceTree = "<group>"; };
+		CF38D8E0260F68B900307225 /* PokemonInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonInfoModel.swift; sourceTree = "<group>"; };
+		CF38D8E5260F6C6700307225 /* InfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoInteractor.swift; sourceTree = "<group>"; };
+		CF38D8EC260F6FA600307225 /* InfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPresenter.swift; sourceTree = "<group>"; };
+		CF38D8F4260F725B00307225 /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
+		CF38D8FA260F72FF00307225 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		CFAE556F260F0D7800F220FF /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFAE5572260F0D7800F220FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFAE5574260F0D7800F220FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,7 +85,7 @@
 		CFAE55E4260F1CE400F220FF /* PokemonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonRepository.swift; sourceTree = "<group>"; };
 		CFAE55EA260F244900F220FF /* PokemonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonModel.swift; sourceTree = "<group>"; };
 		CFAE55F3260F26AE00F220FF /* PokemonMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonMapper.swift; sourceTree = "<group>"; };
-		CFAE5607260F2B6200F220FF /* HomeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUseCase.swift; sourceTree = "<group>"; };
+		CFAE5607260F2B6200F220FF /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		CFAE560F260F2C8500F220FF /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		CFAE5614260F2E4600F220FF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,6 +116,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF38D8EA260F6F1D00307225 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				CF38D8EB260F6F2E00307225 /* Presenter */,
+				CF38D8F9260F72E900307225 /* View */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
+		CF38D8EB260F6F2E00307225 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CF38D8EC260F6FA600307225 /* InfoPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CF38D8F9260F72E900307225 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CF38D8FA260F72FF00307225 /* InfoView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		CFAE5566260F0D7800F220FF = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				CFAE55C8260F15C100F220FF /* PokemonResponse.swift */,
+				CF38D8D8260F634700307225 /* PokemonInfoResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -262,7 +298,6 @@
 			isa = PBXGroup;
 			children = (
 				CFAE55DC260F1AE600F220FF /* CustomeError+Ext.swift */,
-				CF38D8C2260F406800307225 /* UIImage+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -271,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				CFAE55EA260F244900F220FF /* PokemonModel.swift */,
+				CF38D8E0260F68B900307225 /* PokemonInfoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -294,6 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				CFAE55FA260F28E000F220FF /* Home */,
+				CF38D8EA260F6F1D00307225 /* Info */,
 			);
 			path = Modul;
 			sourceTree = "<group>";
@@ -328,6 +365,7 @@
 		CFAE55FD260F29A600F220FF /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				CF38D8F4260F725B00307225 /* HomeRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -335,7 +373,8 @@
 		CFAE5606260F2B2800F220FF /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				CFAE5607260F2B6200F220FF /* HomeUseCase.swift */,
+				CFAE5607260F2B6200F220FF /* HomeInteractor.swift */,
+				CF38D8E5260F6C6700307225 /* InfoInteractor.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -508,12 +547,17 @@
 				CFAE55E5260F1CE400F220FF /* PokemonRepository.swift in Sources */,
 				CFAE55D7260F18F200F220FF /* APICall.swift in Sources */,
 				CF38D8B3260F31EF00307225 /* Injection.swift in Sources */,
-				CF38D8C3260F406800307225 /* UIImage+Ext.swift in Sources */,
+				CF38D8ED260F6FA600307225 /* InfoPresenter.swift in Sources */,
 				CFAE5573260F0D7800F220FF /* AppDelegate.swift in Sources */,
+				CF38D8FB260F72FF00307225 /* InfoView.swift in Sources */,
 				CFAE5575260F0D7800F220FF /* SceneDelegate.swift in Sources */,
 				CFAE55EB260F244900F220FF /* PokemonModel.swift in Sources */,
 				CFAE55F4260F26AE00F220FF /* PokemonMapper.swift in Sources */,
-				CFAE5608260F2B6200F220FF /* HomeUseCase.swift in Sources */,
+				CF38D8E6260F6C6700307225 /* InfoInteractor.swift in Sources */,
+				CF38D8F5260F725B00307225 /* HomeRouter.swift in Sources */,
+				CFAE5608260F2B6200F220FF /* HomeInteractor.swift in Sources */,
+				CF38D8E1260F68B900307225 /* PokemonInfoModel.swift in Sources */,
+				CF38D8D9260F634700307225 /* PokemonInfoResponse.swift in Sources */,
 				CFAE5577260F0D7800F220FF /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -612,7 +656,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -667,7 +711,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

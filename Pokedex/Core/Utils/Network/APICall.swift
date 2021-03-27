@@ -28,7 +28,7 @@ enum Endpoints {
     public var url: String {
       switch self {
       case .list: return "\(API.baseUrl)pokemon?limit=20&offset=0"
-      case .info: return "\(API.baseUrl)pokemon"
+      case .info: return "\(API.baseUrl)pokemon/"
       }
     }
   }

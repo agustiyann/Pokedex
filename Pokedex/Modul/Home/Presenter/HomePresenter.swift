@@ -5,10 +5,11 @@
 //  Created by Agus Tiyansyah Syam on 27/03/21.
 //
 
-import Foundation
+import SwiftUI
 
 class HomePresenter: ObservableObject {
 
+  private let router = HomeRouter()
   private let homeUseCase: HomeUseCase
 
   @Published var pokemonList = [PokemonModel]()
@@ -35,6 +36,13 @@ class HomePresenter: ObservableObject {
         }
       }
     }
+  }
+
+  func linkBuilder<Content: View>(
+    for id: Int,
+    @ViewBuilder content: () -> Content
+  ) -> some View {
+    NavigationLink(destination: router.makeInfoView(for: id)) { content() }
   }
 
 }

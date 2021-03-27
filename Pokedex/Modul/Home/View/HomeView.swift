@@ -22,8 +22,10 @@ struct HomeView: View {
         ScrollView(.vertical, showsIndicators: false) {
           ForEach(self.presenter.pokemonList.indices) { index in
             ZStack {
-              PokemonRowView(pokemon: self.presenter.pokemonList[index], index: index + 1)
-            }
+              self.presenter.linkBuilder(for: index + 1) {
+                PokemonRowView(pokemon: self.presenter.pokemonList[index], index: index + 1)
+              }.buttonStyle(PlainButtonStyle())
+            }.padding(8)
           }
         }
       }

@@ -38,4 +38,23 @@ extension RemoteDataSource: RemoteDataSourceProtocol {
     task.resume()
   }
 
+  func getPokemonInfo(id: Int, result: @escaping (Result<PokemonInfoResponse, URLError>) -> Void) {
+    guard let url = URL(string: "\(Endpoints.Gets.info.url)\(id)") else { return }
+
+    let task = URLSession.shared.dataTask(with: url) { maybeData, maybeResponse, maybeError in
+      if maybeError != nil {
+        result(.failure(.addressUnreachable(url)))
+      } else if let data = maybeData, let response = maybeResponse as? HTTPURLResponse, response.statusCode == 200 {
+        let decoder = JSONDecoder()
+        do {
+          let pokemon = try decoder.decode(PokemonInfoResponse.self, from: data)
+          result(.success(pokemon))
+        } catch {
+          result(.failure(.invalidResponse))
+        }
+      }
+    }
+    task.resume()
+  }
+
 }

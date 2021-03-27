@@ -13,37 +13,19 @@ struct PokemonRowView: View {
   var pokemon: PokemonModel
   var index: Int
 
-  @State private var backgroundColor: Color = .clear
-
   var body: some View {
     VStack {
       imageCategory
       content
     }
     .frame(width: UIScreen.main.bounds.width - 32, height: 250)
-    .background(backgroundColor)
+    .background(Color.gray)
     .cornerRadius(30)
-    .onAppear {
-      self.setAverageColor()
-    }
-
   }
 
   private func setImageUrl(for indexImage: Int) -> String {
     let imagePathUrl = "https://pokeres.bastionbot.org/images/pokemon/"
     return "\(imagePathUrl)\(indexImage).png"
-  }
-
-  private func setAverageColor() {
-    var image: UIImage?
-    let urlString = setImageUrl(for: self.index)
-
-    let url = NSURL(string: urlString)! as URL
-    if let imageData: NSData = NSData(contentsOf: url) {
-        image = UIImage(data: imageData as Data)
-    }
-    let uiColor = image?.averageColor ?? .clear
-    backgroundColor = Color(uiColor)
   }
 
 }
