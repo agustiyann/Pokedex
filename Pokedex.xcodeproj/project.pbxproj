@@ -20,6 +20,9 @@
 		CFAE55D1260F17B900F220FF /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE55D0260F17B900F220FF /* RemoteDataSource.swift */; };
 		CFAE55D7260F18F200F220FF /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE55D6260F18F200F220FF /* APICall.swift */; };
 		CFAE55DD260F1AE600F220FF /* CustomeError+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE55DC260F1AE600F220FF /* CustomeError+Ext.swift */; };
+		CFAE55E5260F1CE400F220FF /* PokemonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE55E4260F1CE400F220FF /* PokemonRepository.swift */; };
+		CFAE55EB260F244900F220FF /* PokemonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE55EA260F244900F220FF /* PokemonModel.swift */; };
+		CFAE55F4260F26AE00F220FF /* PokemonMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE55F3260F26AE00F220FF /* PokemonMapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		CFAE55D0260F17B900F220FF /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
 		CFAE55D6260F18F200F220FF /* APICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICall.swift; sourceTree = "<group>"; };
 		CFAE55DC260F1AE600F220FF /* CustomeError+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomeError+Ext.swift"; sourceTree = "<group>"; };
+		CFAE55E4260F1CE400F220FF /* PokemonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonRepository.swift; sourceTree = "<group>"; };
+		CFAE55EA260F244900F220FF /* PokemonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonModel.swift; sourceTree = "<group>"; };
+		CFAE55F3260F26AE00F220FF /* PokemonMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonMapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				CFAE55C6260F157C00F220FF /* Remote */,
+				CFAE55E4260F1CE400F220FF /* PokemonRepository.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -186,6 +193,7 @@
 		CFAE55C3260F154D00F220FF /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				CFAE55E9260F243400F220FF /* Model */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -201,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				CFAE55DB260F1AAB00F220FF /* Extensions */,
+				CFAE55F2260F269500F220FF /* Mapper */,
 				CFAE55D5260F18CD00F220FF /* Network */,
 			);
 			path = Utils;
@@ -237,6 +246,22 @@
 				CFAE55DC260F1AE600F220FF /* CustomeError+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CFAE55E9260F243400F220FF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CFAE55EA260F244900F220FF /* PokemonModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CFAE55F2260F269500F220FF /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				CFAE55F3260F26AE00F220FF /* PokemonMapper.swift */,
+			);
+			path = Mapper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,9 +420,12 @@
 				CFAE55C9260F15C100F220FF /* PokemonResponse.swift in Sources */,
 				CFAE55DD260F1AE600F220FF /* CustomeError+Ext.swift in Sources */,
 				CFAE55D1260F17B900F220FF /* RemoteDataSource.swift in Sources */,
+				CFAE55E5260F1CE400F220FF /* PokemonRepository.swift in Sources */,
 				CFAE55D7260F18F200F220FF /* APICall.swift in Sources */,
 				CFAE5573260F0D7800F220FF /* AppDelegate.swift in Sources */,
 				CFAE5575260F0D7800F220FF /* SceneDelegate.swift in Sources */,
+				CFAE55EB260F244900F220FF /* PokemonModel.swift in Sources */,
+				CFAE55F4260F26AE00F220FF /* PokemonMapper.swift in Sources */,
 				CFAE5577260F0D7800F220FF /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
