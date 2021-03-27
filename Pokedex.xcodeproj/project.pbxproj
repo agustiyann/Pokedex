@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF38D8B3260F31EF00307225 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF38D8B2260F31EF00307225 /* Injection.swift */; };
 		CFAE5573260F0D7800F220FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5572260F0D7800F220FF /* AppDelegate.swift */; };
 		CFAE5575260F0D7800F220FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5574260F0D7800F220FF /* SceneDelegate.swift */; };
 		CFAE5577260F0D7800F220FF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5576260F0D7800F220FF /* ContentView.swift */; };
@@ -24,6 +25,8 @@
 		CFAE55EB260F244900F220FF /* PokemonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE55EA260F244900F220FF /* PokemonModel.swift */; };
 		CFAE55F4260F26AE00F220FF /* PokemonMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE55F3260F26AE00F220FF /* PokemonMapper.swift */; };
 		CFAE5608260F2B6200F220FF /* HomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5607260F2B6200F220FF /* HomeUseCase.swift */; };
+		CFAE5610260F2C8500F220FF /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE560F260F2C8500F220FF /* HomePresenter.swift */; };
+		CFAE5615260F2E4600F220FF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5614260F2E4600F220FF /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CF38D8B2260F31EF00307225 /* Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injection.swift; sourceTree = "<group>"; };
 		CFAE556F260F0D7800F220FF /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFAE5572260F0D7800F220FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFAE5574260F0D7800F220FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +71,8 @@
 		CFAE55EA260F244900F220FF /* PokemonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonModel.swift; sourceTree = "<group>"; };
 		CFAE55F3260F26AE00F220FF /* PokemonMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonMapper.swift; sourceTree = "<group>"; };
 		CFAE5607260F2B6200F220FF /* HomeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUseCase.swift; sourceTree = "<group>"; };
+		CFAE560F260F2C8500F220FF /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		CFAE5614260F2E4600F220FF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +211,7 @@
 		CFAE55C4260F155500F220FF /* DI */ = {
 			isa = PBXGroup;
 			children = (
+				CF38D8B2260F31EF00307225 /* Injection.swift */,
 			);
 			path = DI;
 			sourceTree = "<group>";
@@ -297,6 +304,7 @@
 		CFAE55FB260F299800F220FF /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				CFAE560F260F2C8500F220FF /* HomePresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -304,6 +312,7 @@
 		CFAE55FC260F299F00F220FF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CFAE5614260F2E4600F220FF /* HomeView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -478,9 +487,12 @@
 			files = (
 				CFAE55C9260F15C100F220FF /* PokemonResponse.swift in Sources */,
 				CFAE55DD260F1AE600F220FF /* CustomeError+Ext.swift in Sources */,
+				CFAE5615260F2E4600F220FF /* HomeView.swift in Sources */,
 				CFAE55D1260F17B900F220FF /* RemoteDataSource.swift in Sources */,
+				CFAE5610260F2C8500F220FF /* HomePresenter.swift in Sources */,
 				CFAE55E5260F1CE400F220FF /* PokemonRepository.swift in Sources */,
 				CFAE55D7260F18F200F220FF /* APICall.swift in Sources */,
+				CF38D8B3260F31EF00307225 /* Injection.swift in Sources */,
 				CFAE5573260F0D7800F220FF /* AppDelegate.swift in Sources */,
 				CFAE5575260F0D7800F220FF /* SceneDelegate.swift in Sources */,
 				CFAE55EB260F244900F220FF /* PokemonModel.swift in Sources */,
