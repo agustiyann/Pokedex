@@ -15,4 +15,11 @@ final class PokemonMapper {
     }
   }
 
+  static func mapPokemonInfoResponseToDomain(input pokemonResponse: PokemonInfoResponse) -> PokemonInfoModel {
+    return PokemonInfoModel(id: pokemonResponse.id ?? 0,
+                            name: pokemonResponse.name ?? "Unknow",
+                            height: pokemonResponse.height ?? 0,
+                            weight: pokemonResponse.weight ?? 0)
+  }
+
 }

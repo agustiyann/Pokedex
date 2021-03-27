@@ -19,4 +19,9 @@ final class Injection: NSObject {
     return HomeInteractor(repository: repository)
   }
 
+  func provideInfo() -> InfoUseCase {
+    let repository = provideRepository()
+    return InfoInteractor(repository: repository)
+  }
+
 }
