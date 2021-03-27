@@ -23,6 +23,7 @@
 		CFAE55E5260F1CE400F220FF /* PokemonRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE55E4260F1CE400F220FF /* PokemonRepository.swift */; };
 		CFAE55EB260F244900F220FF /* PokemonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE55EA260F244900F220FF /* PokemonModel.swift */; };
 		CFAE55F4260F26AE00F220FF /* PokemonMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE55F3260F26AE00F220FF /* PokemonMapper.swift */; };
+		CFAE5608260F2B6200F220FF /* HomeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5607260F2B6200F220FF /* HomeUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		CFAE55E4260F1CE400F220FF /* PokemonRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonRepository.swift; sourceTree = "<group>"; };
 		CFAE55EA260F244900F220FF /* PokemonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonModel.swift; sourceTree = "<group>"; };
 		CFAE55F3260F26AE00F220FF /* PokemonMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonMapper.swift; sourceTree = "<group>"; };
+		CFAE5607260F2B6200F220FF /* HomeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			children = (
 				CFAE55A8260F0E3300F220FF /* App */,
 				CFAE55C1260F152600F220FF /* Core */,
+				CFAE55F9260F28D100F220FF /* Modul */,
 				CFAE557A260F0D7900F220FF /* Preview Content */,
 				CFAE55A9260F0F2900F220FF /* Supporting Files */,
 			);
@@ -194,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				CFAE55E9260F243400F220FF /* Model */,
+				CFAE5606260F2B2800F220FF /* UseCase */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -208,6 +212,7 @@
 		CFAE55C5260F156800F220FF /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CFAE55F8260F287E00F220FF /* Views */,
 				CFAE55DB260F1AAB00F220FF /* Extensions */,
 				CFAE55F2260F269500F220FF /* Mapper */,
 				CFAE55D5260F18CD00F220FF /* Network */,
@@ -262,6 +267,60 @@
 				CFAE55F3260F26AE00F220FF /* PokemonMapper.swift */,
 			);
 			path = Mapper;
+			sourceTree = "<group>";
+		};
+		CFAE55F8260F287E00F220FF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CFAE55F9260F28D100F220FF /* Modul */ = {
+			isa = PBXGroup;
+			children = (
+				CFAE55FA260F28E000F220FF /* Home */,
+			);
+			path = Modul;
+			sourceTree = "<group>";
+		};
+		CFAE55FA260F28E000F220FF /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				CFAE55FB260F299800F220FF /* Presenter */,
+				CFAE55FD260F29A600F220FF /* Router */,
+				CFAE55FC260F299F00F220FF /* View */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		CFAE55FB260F299800F220FF /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CFAE55FC260F299F00F220FF /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CFAE55FD260F29A600F220FF /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		CFAE5606260F2B2800F220FF /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				CFAE5607260F2B6200F220FF /* HomeUseCase.swift */,
+			);
+			path = UseCase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -426,6 +485,7 @@
 				CFAE5575260F0D7800F220FF /* SceneDelegate.swift in Sources */,
 				CFAE55EB260F244900F220FF /* PokemonModel.swift in Sources */,
 				CFAE55F4260F26AE00F220FF /* PokemonMapper.swift in Sources */,
+				CFAE5608260F2B6200F220FF /* HomeUseCase.swift in Sources */,
 				CFAE5577260F0D7800F220FF /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
