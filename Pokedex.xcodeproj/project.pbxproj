@@ -15,6 +15,7 @@
 		CFAE557F260F0D7900F220FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CFAE557D260F0D7900F220FF /* LaunchScreen.storyboard */; };
 		CFAE558A260F0D7900F220FF /* PokedexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5589260F0D7900F220FF /* PokedexTests.swift */; };
 		CFAE5595260F0D7900F220FF /* PokedexUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5594260F0D7900F220FF /* PokedexUITests.swift */; };
+		CFAE55BD260F130000F220FF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = CFAE55BC260F130000F220FF /* .swiftlint.yml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		CFAE5590260F0D7900F220FF /* PokedexUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PokedexUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFAE5594260F0D7900F220FF /* PokedexUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexUITests.swift; sourceTree = "<group>"; };
 		CFAE5596260F0D7900F220FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CFAE55BC260F130000F220FF /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		CFAE5566260F0D7800F220FF = {
 			isa = PBXGroup;
 			children = (
+				CFAE55BC260F130000F220FF /* .swiftlint.yml */,
 				CFAE5571260F0D7800F220FF /* Pokedex */,
 				CFAE5588260F0D7900F220FF /* PokedexTests */,
 				CFAE5593260F0D7900F220FF /* PokedexUITests */,
@@ -99,13 +102,9 @@
 		CFAE5571260F0D7800F220FF /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
-				CFAE5572260F0D7800F220FF /* AppDelegate.swift */,
-				CFAE5574260F0D7800F220FF /* SceneDelegate.swift */,
-				CFAE5576260F0D7800F220FF /* ContentView.swift */,
-				CFAE5578260F0D7900F220FF /* Assets.xcassets */,
-				CFAE557D260F0D7900F220FF /* LaunchScreen.storyboard */,
-				CFAE5580260F0D7900F220FF /* Info.plist */,
+				CFAE55A8260F0E3300F220FF /* App */,
 				CFAE557A260F0D7900F220FF /* Preview Content */,
+				CFAE55A9260F0F2900F220FF /* Supporting Files */,
 			);
 			path = Pokedex;
 			sourceTree = "<group>";
@@ -136,6 +135,26 @@
 			path = PokedexUITests;
 			sourceTree = "<group>";
 		};
+		CFAE55A8260F0E3300F220FF /* App */ = {
+			isa = PBXGroup;
+			children = (
+				CFAE5572260F0D7800F220FF /* AppDelegate.swift */,
+				CFAE5576260F0D7800F220FF /* ContentView.swift */,
+				CFAE5574260F0D7800F220FF /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		CFAE55A9260F0F2900F220FF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CFAE5578260F0D7900F220FF /* Assets.xcassets */,
+				CFAE5580260F0D7900F220FF /* Info.plist */,
+				CFAE557D260F0D7900F220FF /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,6 +165,7 @@
 				CFAE556B260F0D7800F220FF /* Sources */,
 				CFAE556C260F0D7800F220FF /* Frameworks */,
 				CFAE556D260F0D7800F220FF /* Resources */,
+				CFAE55B0260F102D00F220FF /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -239,6 +259,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFAE55BD260F130000F220FF /* .swiftlint.yml in Resources */,
 				CFAE557F260F0D7900F220FF /* LaunchScreen.storyboard in Resources */,
 				CFAE557C260F0D7900F220FF /* Preview Assets.xcassets in Resources */,
 				CFAE5579260F0D7900F220FF /* Assets.xcassets in Resources */,
@@ -260,6 +281,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CFAE55B0260F102D00F220FF /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CFAE556B260F0D7800F220FF /* Sources */ = {
@@ -440,7 +482,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Pokedex/Preview Content\"";
 				DEVELOPMENT_TEAM = KRF6V32MMS;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Pokedex/Info.plist;
+				INFOPLIST_FILE = "Pokedex/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -462,7 +504,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Pokedex/Preview Content\"";
 				DEVELOPMENT_TEAM = KRF6V32MMS;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Pokedex/Info.plist;
+				INFOPLIST_FILE = "Pokedex/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
