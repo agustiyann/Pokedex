@@ -16,6 +16,10 @@
 		CFAE558A260F0D7900F220FF /* PokedexTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5589260F0D7900F220FF /* PokedexTests.swift */; };
 		CFAE5595260F0D7900F220FF /* PokedexUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5594260F0D7900F220FF /* PokedexUITests.swift */; };
 		CFAE55BD260F130000F220FF /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = CFAE55BC260F130000F220FF /* .swiftlint.yml */; };
+		CFAE55C9260F15C100F220FF /* PokemonResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE55C8260F15C100F220FF /* PokemonResponse.swift */; };
+		CFAE55D1260F17B900F220FF /* RemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE55D0260F17B900F220FF /* RemoteDataSource.swift */; };
+		CFAE55D7260F18F200F220FF /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE55D6260F18F200F220FF /* APICall.swift */; };
+		CFAE55DD260F1AE600F220FF /* CustomeError+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE55DC260F1AE600F220FF /* CustomeError+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,10 @@
 		CFAE5594260F0D7900F220FF /* PokedexUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexUITests.swift; sourceTree = "<group>"; };
 		CFAE5596260F0D7900F220FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CFAE55BC260F130000F220FF /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		CFAE55C8260F15C100F220FF /* PokemonResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonResponse.swift; sourceTree = "<group>"; };
+		CFAE55D0260F17B900F220FF /* RemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataSource.swift; sourceTree = "<group>"; };
+		CFAE55D6260F18F200F220FF /* APICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICall.swift; sourceTree = "<group>"; };
+		CFAE55DC260F1AE600F220FF /* CustomeError+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomeError+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				CFAE55A8260F0E3300F220FF /* App */,
+				CFAE55C1260F152600F220FF /* Core */,
 				CFAE557A260F0D7900F220FF /* Preview Content */,
 				CFAE55A9260F0F2900F220FF /* Supporting Files */,
 			);
@@ -153,6 +162,81 @@
 				CFAE557D260F0D7900F220FF /* LaunchScreen.storyboard */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CFAE55C1260F152600F220FF /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				CFAE55C2260F153F00F220FF /* Data */,
+				CFAE55C4260F155500F220FF /* DI */,
+				CFAE55C3260F154D00F220FF /* Domain */,
+				CFAE55C5260F156800F220FF /* Utils */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		CFAE55C2260F153F00F220FF /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				CFAE55C6260F157C00F220FF /* Remote */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		CFAE55C3260F154D00F220FF /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		CFAE55C4260F155500F220FF /* DI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		CFAE55C5260F156800F220FF /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CFAE55DB260F1AAB00F220FF /* Extensions */,
+				CFAE55D5260F18CD00F220FF /* Network */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		CFAE55C6260F157C00F220FF /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				CFAE55C7260F158400F220FF /* Response */,
+				CFAE55D0260F17B900F220FF /* RemoteDataSource.swift */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		CFAE55C7260F158400F220FF /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				CFAE55C8260F15C100F220FF /* PokemonResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		CFAE55D5260F18CD00F220FF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				CFAE55D6260F18F200F220FF /* APICall.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		CFAE55DB260F1AAB00F220FF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CFAE55DC260F1AE600F220FF /* CustomeError+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +392,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFAE55C9260F15C100F220FF /* PokemonResponse.swift in Sources */,
+				CFAE55DD260F1AE600F220FF /* CustomeError+Ext.swift in Sources */,
+				CFAE55D1260F17B900F220FF /* RemoteDataSource.swift in Sources */,
+				CFAE55D7260F18F200F220FF /* APICall.swift in Sources */,
 				CFAE5573260F0D7800F220FF /* AppDelegate.swift in Sources */,
 				CFAE5575260F0D7800F220FF /* SceneDelegate.swift in Sources */,
 				CFAE5577260F0D7800F220FF /* ContentView.swift in Sources */,
