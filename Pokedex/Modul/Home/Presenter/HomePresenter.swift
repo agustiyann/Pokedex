@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import Combine
 
 class HomePresenter: ObservableObject {
 
+  private var cancellables: Set<AnyCancellable> = []
   private let router = HomeRouter()
   private let homeUseCase: HomeUseCase
 
@@ -22,20 +24,19 @@ class HomePresenter: ObservableObject {
 
   func getPokemonList() {
     loadingState = true
-    homeUseCase.getPokemonList { result in
-      switch result {
-      case .success(let pokemonList):
-        DispatchQueue.main.async {
+    homeUseCase.getPokemonList()
+      .receive(on: RunLoop.main)
+      .sink(receiveCompletion: { completion in
+        switch completion {
+        case .failure:
+          self.errorMessage = String(describing: completion)
+        case .finished:
           self.loadingState = false
-          self.pokemonList = pokemonList
         }
-      case .failure(let error):
-        DispatchQueue.main.async {
-          self.loadingState = false
-          self.errorMessage = error.localizedDescription
-        }
-      }
-    }
+      }, receiveValue: { pokemons in
+        self.pokemonList = pokemons
+      })
+      .store(in: &cancellables)
   }
 
   func linkBuilder<Content: View>(

@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import Combine
 
 protocol HomeUseCase {
-  func getPokemonList(completion: @escaping (Result<[PokemonModel], Error>) -> Void)
+  func getPokemonList() -> AnyPublisher<[PokemonModel], Error>
 }
 
 class HomeInteractor: HomeUseCase {
@@ -19,9 +20,7 @@ class HomeInteractor: HomeUseCase {
     self.repository = repository
   }
 
-  func getPokemonList(completion: @escaping (Result<[PokemonModel], Error>) -> Void) {
-    repository.getPokemonList { result in
-      completion(result)
-    }
+  func getPokemonList() -> AnyPublisher<[PokemonModel], Error> {
+    return repository.getPokemonList()
   }
 }

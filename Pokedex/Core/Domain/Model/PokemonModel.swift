@@ -18,7 +18,7 @@ struct PokemonModel: Equatable {
   let attack: Int
   let defense: Int
   let type: [String]
-  let favoriteState: Bool
+  var favoriteState: Bool
 }
 
 let samplePokemon = PokemonModel(

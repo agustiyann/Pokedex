@@ -30,6 +30,9 @@ struct InfoView: View {
         }
       }
     }
+    .onAppear {
+      self.presenter.getPokemon()
+    }
     .navigationBarItems(
       trailing: Text("#\(self.presenter.pokemon.num)")
         .foregroundColor(.white)
@@ -108,9 +111,23 @@ extension InfoView {
 
       BarChartView(pokemon: self.presenter.pokemon)
 
-      Button("Button") { }
+      if self.presenter.pokemon.favoriteState {
+        Button(action: {
+          self.presenter.unFavorite()
+        }, label: {
+          Text("Remove From Favorite")
+        })
         .buttonStyle(FilledButton())
         .padding(20)
+      } else {
+        Button(action: {
+          self.presenter.addFavorite()
+        }, label: {
+          Text("Add to Favorite")
+        })
+        .buttonStyle(FilledButton())
+        .padding(20)
+      }
 
       HStack { Spacer() }
     }

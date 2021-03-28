@@ -6,11 +6,14 @@
 //
 
 import Foundation
+import Combine
 
 protocol PokemonRepositoryProtocol {
 
-  func getPokemonList(result: @escaping (Result<[PokemonModel], Error>) -> Void)
-
+  func getPokemonList() -> AnyPublisher<[PokemonModel], Error>
+  func getPokemon(by num: String) -> AnyPublisher<PokemonModel, Error>
+  func addPokemonFavorite(from pokemon: PokemonModel) -> AnyPublisher<Bool, Error>
+  func removePokemonFavorite(from pokemon: PokemonModel) -> AnyPublisher<Bool, Error>
 }
 
 final class PokemonRepository: NSObject {
@@ -31,57 +34,28 @@ final class PokemonRepository: NSObject {
 
 extension PokemonRepository: PokemonRepositoryProtocol {
 
-  func getPokemonList(result: @escaping (Result<[PokemonModel], Error>) -> Void) {
-    locale.getPokemonList { localeResponses in
-      switch localeResponses {
-      case .success(let pokemonEntity):
-        let pokemonList = PokemonMapper.mapPokemonEntitiesToDomains(input: pokemonEntity)
-        if pokemonList.isEmpty {
-          self.remote.getPokemonList { remoteResponse in
-            switch remoteResponse {
-            case .success(let pokemonResponses):
-              let pokemonEntities = PokemonMapper.mapPokemonResponsesToEntities(input: pokemonResponses)
-              self.locale.addPokemons(from: pokemonEntities) { addState in
-                switch addState {
-                case .success(let resultFromAdd):
-                  if resultFromAdd {
-                    self.locale.getPokemonList { localeResponses in
-                      switch localeResponses {
-                      case .success(let pokemonEntity):
-                        let resultList = PokemonMapper.mapPokemonEntitiesToDomains(input: pokemonEntity)
-                        result(.success(resultList))
-                      case .failure(let error):
-                        result(.failure(error))
-                      }
-                    }
-                  }
-                case .failure(let error):
-                  result(.failure(error))
-                }
-              }
-            case .failure(let error):
-              result(.failure(error))
-            }
-          }
-        } else {
-          result(.success(pokemonList))
-        }
-      case .failure(let error):
-        result(.failure(error))
-      }
-    }
+  func getPokemonList() -> AnyPublisher<[PokemonModel], Error> {
+    return self.remote.getPokemonList()
+      .map { PokemonMapper.mapPokemonResponsesToDomains(input: $0) }
+      .eraseToAnyPublisher()
   }
 
-//  func getPokemonList(result: @escaping (Result<[PokemonModel], Error>) -> Void) {
-//    self.remote.getPokemonList { remoteResponse in
-//      switch remoteResponse {
-//      case .success(let pokemonResponses):
-//        let resultList = PokemonMapper.mapPokemonResponsesToDomains(input: pokemonResponses)
-//        result(.success(resultList))
-//      case .failure(let error):
-//        result(.failure(error))
-//      }
-//    }
-//  }
+  func getPokemon(by num: String) -> AnyPublisher<PokemonModel, Error> {
+    return self.locale.getArticle(by: num)
+      .map { PokemonMapper.mapPokemonEntityToDomain(input: $0) }
+      .eraseToAnyPublisher()
+  }
+
+  func addPokemonFavorite(from pokemon: PokemonModel) -> AnyPublisher<Bool, Error> {
+    let pokemonEntity = PokemonMapper.mapPokemonDomainToEntity(input: pokemon)
+    return self.locale.addPokemonFavorite(from: pokemonEntity)
+      .eraseToAnyPublisher()
+  }
+
+  func removePokemonFavorite(from pokemon: PokemonModel) -> AnyPublisher<Bool, Error> {
+    let pokemonEntity = PokemonMapper.mapPokemonDomainToEntity(input: pokemon)
+    return self.locale.removePokemonFavorite(from: pokemonEntity)
+      .eraseToAnyPublisher()
+  }
 
 }

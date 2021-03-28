@@ -72,4 +72,42 @@ final class PokemonMapper {
     }
   }
 
+  static func mapPokemonDomainToEntity(input pokemonModel: PokemonModel) -> PokemonEntity {
+    let newPokemon = PokemonEntity()
+    newPokemon.id = pokemonModel.id
+    newPokemon.name = pokemonModel.name
+    newPokemon.num = pokemonModel.num
+    newPokemon.desc = pokemonModel.description
+    newPokemon.img = pokemonModel.img
+    newPokemon.height = pokemonModel.height
+    newPokemon.weight = pokemonModel.weight
+    newPokemon.attack = pokemonModel.attack
+    newPokemon.defense = pokemonModel.defense
+    newPokemon.favoriteState = false
+
+    for type in pokemonModel.type {
+      newPokemon.type.append(type)
+    }
+
+    return newPokemon
+  }
+
+  static func mapPokemonEntityToDomain(input pokemonEntity: PokemonEntity) -> PokemonModel {
+    return PokemonModel(
+      id: pokemonEntity.id,
+      name: pokemonEntity.name,
+      num: pokemonEntity.num,
+      description: pokemonEntity.desc,
+      img: pokemonEntity.img,
+      height: pokemonEntity.height,
+      weight: pokemonEntity.weight,
+      attack: pokemonEntity.attack,
+      defense: pokemonEntity.defense,
+      type: pokemonEntity.type.map { type in
+        return type
+      },
+      favoriteState: pokemonEntity.favoriteState
+    )
+  }
+
 }

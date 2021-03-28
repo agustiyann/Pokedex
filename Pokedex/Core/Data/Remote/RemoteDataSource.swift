@@ -7,9 +7,10 @@
 
 import Foundation
 import Alamofire
+import Combine
 
 protocol RemoteDataSourceProtocol: class {
-  func getPokemonList(result: @escaping (Result<[PokemonResponse], URLError>) -> Void)
+  func getPokemonList() -> AnyPublisher<[PokemonResponse], Error>
 }
 
 final class RemoteDataSource: NSObject {
@@ -20,17 +21,20 @@ final class RemoteDataSource: NSObject {
 
 extension RemoteDataSource: RemoteDataSourceProtocol {
 
-  func getPokemonList(result: @escaping (Result<[PokemonResponse], URLError>) -> Void) {
-    guard let url = URL(string: Endpoints.Gets.list.url) else { return }
+  func getPokemonList() -> AnyPublisher<[PokemonResponse], Error> {
+    return Future<[PokemonResponse], Error> { completion in
+      guard let url = URL(string: Endpoints.Gets.list.url) else { return }
 
-    AF.request(url).validate().responseDecodable(of: PokemonsResponse.self) { response in
-      switch response.result {
-      case .success(let value):
-        result(.success(value.results))
-      case .failure:
-        result(.failure(.invalidResponse))
+      AF.request(url).validate().responseDecodable(of: PokemonsResponse.self) { response in
+        switch response.result {
+        case .success(let value):
+          completion(.success(value.results))
+        case .failure:
+          completion(.failure(URLError.invalidResponse))
+        }
       }
-    }
+
+    }.eraseToAnyPublisher()
   }
 
 }

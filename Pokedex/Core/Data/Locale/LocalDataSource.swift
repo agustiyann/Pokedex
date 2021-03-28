@@ -7,12 +7,14 @@
 
 import Foundation
 import RealmSwift
+import Combine
 
 protocol LocalDataSourceProtocol: class {
 
-  func getPokemonList(result: @escaping (Result<[PokemonEntity], DatabaseError>) -> Void)
-
-  func addPokemons(from pokemons: [PokemonEntity], result: @escaping (Result<Bool, DatabaseError>) -> Void)
+  func addPokemons(from pokemons: [PokemonEntity]) -> AnyPublisher<Bool, Error>
+  func getArticle(by num: String) -> AnyPublisher<PokemonEntity, Error>
+  func addPokemonFavorite(from pokemon: PokemonEntity) -> AnyPublisher<Bool, Error>
+  func removePokemonFavorite(from pokemon: PokemonEntity) -> AnyPublisher<Bool, Error>
 }
 
 final class LocalDataSource: NSObject {
@@ -29,33 +31,92 @@ final class LocalDataSource: NSObject {
 
 extension LocalDataSource: LocalDataSourceProtocol {
 
-  func getPokemonList(result: @escaping (Result<[PokemonEntity], DatabaseError>) -> Void) {
-    if let realm = realm {
-      let pokemons: Results<PokemonEntity> = {
-        realm.objects(PokemonEntity.self)
-          .sorted(byKeyPath: "id", ascending: true)
-      }()
-      result(.success(pokemons.toArray(ofType: PokemonEntity.self)))
-    } else {
-      result(.failure(.invalidInstance))
+  func addPokemons(from pokemons: [PokemonEntity]) -> AnyPublisher<Bool, Error> {
+    return Future<Bool, Error> { completion in
+      if let realm = self.realm {
+        do {
+          try realm.write {
+            for pokemon in pokemons {
+              realm.add(pokemon, update: .all)
+            }
+            completion(.success(true))
+          }
+        } catch {
+          completion(.failure(DatabaseError.requestFailed))
+        }
+      } else {
+        completion(.failure(DatabaseError.invalidInstance))
+      }
     }
+    .eraseToAnyPublisher()
   }
 
-  func addPokemons(from pokemons: [PokemonEntity], result: @escaping (Result<Bool, DatabaseError>) -> Void) {
-    if let realm = realm {
-      do {
-        try realm.write {
-          for pokemon in pokemons {
-            realm.add(pokemon, update: .all)
-          }
-          result(.success(true))
+  func getArticle(by num: String) -> AnyPublisher<PokemonEntity, Error> {
+    return Future<PokemonEntity, Error> { completion in
+      if let realm = self.realm {
+        let pokemons: Results<PokemonEntity> = {
+          realm.objects(PokemonEntity.self)
+            .filter("num = '\(num)'")
+        }()
+
+        guard let pokemon = pokemons.first else {
+          completion(.failure(DatabaseError.requestFailed))
+          return
         }
-      } catch {
-        result(.failure(.requestFailed))
+        completion(.success(pokemon))
+      } else {
+        completion(.failure(DatabaseError.invalidInstance))
       }
-    } else {
-      result(.failure(.invalidInstance))
     }
+    .eraseToAnyPublisher()
+  }
+
+  func addPokemonFavorite(from pokemon: PokemonEntity) -> AnyPublisher<Bool, Error> {
+    return Future<Bool, Error> { completion in
+      if let realm = self.realm {
+        do {
+          try realm.write {
+            if realm.isInWriteTransaction {
+              if realm.object(ofType: PokemonEntity.self, forPrimaryKey: pokemon.id) != nil {
+                completion(.failure(DatabaseError.requestFailed))
+              } else {
+                pokemon.favoriteState = true
+                realm.add(pokemon, update: .all)
+                completion(.success(true))
+              }
+            } else {
+              completion(.failure(DatabaseError.requestFailed))
+            }
+          }
+        } catch {
+          completion(.failure(DatabaseError.requestFailed))
+        }
+      } else {
+        completion(.failure(DatabaseError.invalidInstance))
+      }
+    }
+    .eraseToAnyPublisher()
+  }
+
+  func removePokemonFavorite(from pokemon: PokemonEntity) -> AnyPublisher<Bool, Error> {
+
+    return Future<Bool, Error> { completion in
+      if let realm = self.realm {
+        do {
+          try realm.write {
+            let objectToDelete = realm.objects(PokemonEntity.self)
+              .filter("id = \(pokemon.id)")
+            realm.delete(objectToDelete)
+            completion(.success(false))
+          }
+        } catch {
+          completion(.failure(DatabaseError.requestFailed))
+        }
+      } else {
+        completion(.failure(DatabaseError.invalidInstance))
+      }
+    }
+    .eraseToAnyPublisher()
   }
 
 }
