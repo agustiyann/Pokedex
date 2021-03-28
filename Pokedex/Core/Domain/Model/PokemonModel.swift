@@ -18,6 +18,7 @@ struct PokemonModel: Equatable {
   let attack: Int
   let defense: Int
   let type: [String]
+  let favoriteState: Bool
 }
 
 let samplePokemon = PokemonModel(
@@ -30,5 +31,6 @@ let samplePokemon = PokemonModel(
   weight: "6.9 kg",
   attack: 49,
   defense: 49,
-  type: ["Grass", "Poison"]
+  type: ["Grass", "Poison"],
+  favoriteState: false
 )

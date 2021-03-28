@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		CF06C4E926103669007F99C9 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF06C4E826103669007F99C9 /* BarView.swift */; };
 		CF06C4EF2610595B007F99C9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CF06C4EE2610595B007F99C9 /* Alamofire */; };
+		CF06C4F526105D44007F99C9 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = CF06C4F426105D44007F99C9 /* Realm */; };
+		CF06C4F726105D44007F99C9 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = CF06C4F626105D44007F99C9 /* RealmSwift */; };
+		CF06C4FE26105D97007F99C9 /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF06C4FD26105D97007F99C9 /* LocalDataSource.swift */; };
+		CF06C50326105DAA007F99C9 /* PokemonEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF06C50226105DAA007F99C9 /* PokemonEntity.swift */; };
 		CF38D8B3260F31EF00307225 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF38D8B2260F31EF00307225 /* Injection.swift */; };
 		CF38D8B8260F3AFF00307225 /* PokemonRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF38D8B7260F3AFF00307225 /* PokemonRowView.swift */; };
 		CF38D8BE260F3B6B00307225 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = CF38D8BD260F3B6B00307225 /* SDWebImageSwiftUI */; };
@@ -58,6 +62,8 @@
 
 /* Begin PBXFileReference section */
 		CF06C4E826103669007F99C9 /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
+		CF06C4FD26105D97007F99C9 /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
+		CF06C50226105DAA007F99C9 /* PokemonEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonEntity.swift; sourceTree = "<group>"; };
 		CF38D8B2260F31EF00307225 /* Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injection.swift; sourceTree = "<group>"; };
 		CF38D8B7260F3AFF00307225 /* PokemonRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonRowView.swift; sourceTree = "<group>"; };
 		CF38D8E5260F6C6700307225 /* InfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoInteractor.swift; sourceTree = "<group>"; };
@@ -98,6 +104,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF06C4F726105D44007F99C9 /* RealmSwift in Frameworks */,
+				CF06C4F526105D44007F99C9 /* Realm in Frameworks */,
 				CF38D8BE260F3B6B00307225 /* SDWebImageSwiftUI in Frameworks */,
 				CF06C4EF2610595B007F99C9 /* Alamofire in Frameworks */,
 			);
@@ -120,6 +128,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF06C4FB26105D65007F99C9 /* Locale */ = {
+			isa = PBXGroup;
+			children = (
+				CF06C4FC26105D74007F99C9 /* Entity */,
+				CF06C4FD26105D97007F99C9 /* LocalDataSource.swift */,
+			);
+			path = Locale;
+			sourceTree = "<group>";
+		};
+		CF06C4FC26105D74007F99C9 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				CF06C50226105DAA007F99C9 /* PokemonEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		CF38D8EA260F6F1D00307225 /* Info */ = {
 			isa = PBXGroup;
 			children = (
@@ -238,6 +263,7 @@
 		CFAE55C2260F153F00F220FF /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				CF06C4FB26105D65007F99C9 /* Locale */,
 				CFAE55C6260F157C00F220FF /* Remote */,
 				CFAE55E4260F1CE400F220FF /* PokemonRepository.swift */,
 			);
@@ -404,6 +430,8 @@
 			packageProductDependencies = (
 				CF38D8BD260F3B6B00307225 /* SDWebImageSwiftUI */,
 				CF06C4EE2610595B007F99C9 /* Alamofire */,
+				CF06C4F426105D44007F99C9 /* Realm */,
+				CF06C4F626105D44007F99C9 /* RealmSwift */,
 			);
 			productName = Pokedex;
 			productReference = CFAE556F260F0D7800F220FF /* Pokedex.app */;
@@ -479,6 +507,7 @@
 			packageReferences = (
 				CF38D8BC260F3B6B00307225 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 				CF06C4ED2610595B007F99C9 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				CF06C4F326105D44007F99C9 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 			);
 			productRefGroup = CFAE5570260F0D7800F220FF /* Products */;
 			projectDirPath = "";
@@ -562,8 +591,10 @@
 				CF38D8FB260F72FF00307225 /* InfoView.swift in Sources */,
 				CFAE5575260F0D7800F220FF /* SceneDelegate.swift in Sources */,
 				CFAE55EB260F244900F220FF /* PokemonModel.swift in Sources */,
+				CF06C4FE26105D97007F99C9 /* LocalDataSource.swift in Sources */,
 				CFAE55F4260F26AE00F220FF /* PokemonMapper.swift in Sources */,
 				CF38D8E6260F6C6700307225 /* InfoInteractor.swift in Sources */,
+				CF06C50326105DAA007F99C9 /* PokemonEntity.swift in Sources */,
 				CF38D8F5260F725B00307225 /* HomeRouter.swift in Sources */,
 				CFAE5608260F2B6200F220FF /* HomeInteractor.swift in Sources */,
 				CFAE5577260F0D7800F220FF /* ContentView.swift in Sources */,
@@ -907,6 +938,14 @@
 				minimumVersion = 5.4.1;
 			};
 		};
+		CF06C4F326105D44007F99C9 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.7.2;
+			};
+		};
 		CF38D8BC260F3B6B00307225 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
@@ -922,6 +961,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = CF06C4ED2610595B007F99C9 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		CF06C4F426105D44007F99C9 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF06C4F326105D44007F99C9 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		CF06C4F626105D44007F99C9 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF06C4F326105D44007F99C9 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
 		};
 		CF38D8BD260F3B6B00307225 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
