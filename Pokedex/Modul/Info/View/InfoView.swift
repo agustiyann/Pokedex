@@ -23,7 +23,7 @@ struct InfoView: View {
           LinearGradient(gradient: Gradient(colors: [Color.random, Color.white]), startPoint: .top, endPoint: .bottom)
             .ignoresSafeArea()
           Color.white.offset(y: 300)
-          ScrollView(.vertical) {
+          ScrollView(.vertical, showsIndicators: false) {
             imagePokemon
             content
           }
@@ -35,6 +35,7 @@ struct InfoView: View {
         .foregroundColor(.white)
         .font(.title3)
         .bold()
+        .shadow(color: .black, radius: 5, x: 0, y: 0)
     )
   }
 
@@ -106,6 +107,10 @@ extension InfoView {
         .padding(.top)
 
       BarChartView(pokemon: self.presenter.pokemon)
+
+      Button("Button") { }
+        .buttonStyle(FilledButton())
+        .padding(20)
 
       HStack { Spacer() }
     }

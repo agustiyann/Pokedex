@@ -15,7 +15,7 @@ struct ContentView: View {
     NavigationView {
       HomeView(presenter: homePresenter)
     }
-    .accentColor(.white)
+    .accentColor(.gray)
   }
 }
 
