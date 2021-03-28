@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 protocol RemoteDataSourceProtocol: class {
   func getPokemonList(result: @escaping (Result<[PokemonResponse], URLError>) -> Void)
@@ -22,20 +23,14 @@ extension RemoteDataSource: RemoteDataSourceProtocol {
   func getPokemonList(result: @escaping (Result<[PokemonResponse], URLError>) -> Void) {
     guard let url = URL(string: Endpoints.Gets.list.url) else { return }
 
-    let task = URLSession.shared.dataTask(with: url) { maybeData, maybeResponse, maybeError in
-      if maybeError != nil {
-        result(.failure(.addressUnreachable(url)))
-      } else if let data = maybeData, let response = maybeResponse as? HTTPURLResponse, response.statusCode == 200 {
-        let decoder = JSONDecoder()
-        do {
-          let categories = try decoder.decode(PokemonsResponse.self, from: data).results
-          result(.success(categories))
-        } catch {
-          result(.failure(.invalidResponse))
-        }
+    AF.request(url).validate().responseDecodable(of: PokemonsResponse.self) { response in
+      switch response.result {
+      case .success(let value):
+        result(.success(value.results))
+      case .failure:
+        result(.failure(.invalidResponse))
       }
     }
-    task.resume()
   }
 
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CF06C4E926103669007F99C9 /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF06C4E826103669007F99C9 /* BarView.swift */; };
+		CF06C4EF2610595B007F99C9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = CF06C4EE2610595B007F99C9 /* Alamofire */; };
 		CF38D8B3260F31EF00307225 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF38D8B2260F31EF00307225 /* Injection.swift */; };
 		CF38D8B8260F3AFF00307225 /* PokemonRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF38D8B7260F3AFF00307225 /* PokemonRowView.swift */; };
 		CF38D8BE260F3B6B00307225 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = CF38D8BD260F3B6B00307225 /* SDWebImageSwiftUI */; };
@@ -98,6 +99,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF38D8BE260F3B6B00307225 /* SDWebImageSwiftUI in Frameworks */,
+				CF06C4EF2610595B007F99C9 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +403,7 @@
 			name = Pokedex;
 			packageProductDependencies = (
 				CF38D8BD260F3B6B00307225 /* SDWebImageSwiftUI */,
+				CF06C4EE2610595B007F99C9 /* Alamofire */,
 			);
 			productName = Pokedex;
 			productReference = CFAE556F260F0D7800F220FF /* Pokedex.app */;
@@ -475,6 +478,7 @@
 			mainGroup = CFAE5566260F0D7800F220FF;
 			packageReferences = (
 				CF38D8BC260F3B6B00307225 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				CF06C4ED2610595B007F99C9 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = CFAE5570260F0D7800F220FF /* Products */;
 			projectDirPath = "";
@@ -895,6 +899,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CF06C4ED2610595B007F99C9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.1;
+			};
+		};
 		CF38D8BC260F3B6B00307225 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
@@ -906,6 +918,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CF06C4EE2610595B007F99C9 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CF06C4ED2610595B007F99C9 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		CF38D8BD260F3B6B00307225 /* SDWebImageSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CF38D8BC260F3B6B00307225 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
