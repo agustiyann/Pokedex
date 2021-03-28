@@ -14,6 +14,8 @@ final class PokemonMapper {
       return PokemonModel(
         id: result.id ?? 0,
         name: result.name ?? "Unknow",
+        num: result.num ?? "000",
+        description: result.description ?? "Unknow",
         img: result.img ?? "Unknow",
         height: result.height ?? "Unknow",
         weight: result.weight ?? "Unknow",

@@ -10,6 +10,8 @@ import Foundation
 struct PokemonModel: Equatable {
   let id: Int
   let name: String
+  let num: String
+  let description: String
   let img: String
   let height: String
   let weight: String
@@ -17,3 +19,16 @@ struct PokemonModel: Equatable {
   let defense: Int
   let type: [String]
 }
+
+let samplePokemon = PokemonModel(
+  id: 1,
+  name: "Bulbasaur",
+  num: "001",
+  description: "Bulbasaur can be seen napping in bright sunlight.",
+  img: "https://pokeres.bastionbot.org/images/pokemon/1.png",
+  height: "0.71 m",
+  weight: "6.9 kg",
+  attack: 49,
+  defense: 49,
+  type: ["Grass", "Poison"]
+)

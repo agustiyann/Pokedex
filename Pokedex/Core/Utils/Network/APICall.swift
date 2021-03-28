@@ -26,7 +26,7 @@ enum Endpoints {
 
     public var url: String {
       switch self {
-      case .list: return "\(API.baseUrl)ff543949312e373927dc8dfe0dc9e5a0a747378d/pokemon.json"
+      case .list: return "\(API.baseUrl)886e09ed7debc3a65fe2303b0abfded5d2e8a254/pokemon.json"
       }
     }
   }

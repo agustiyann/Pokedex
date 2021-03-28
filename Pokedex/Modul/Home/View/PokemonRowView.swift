@@ -59,16 +59,7 @@ extension PokemonRowView {
 
 struct PokemonRowView_Previews: PreviewProvider {
   static var previews: some View {
-    let pokemon = PokemonModel(
-      id: 1,
-      name: "Bulbasaur",
-      img: "https://pokeres.bastionbot.org/images/pokemon/1.png",
-      height: "1 m",
-      weight: "10 kg",
-      attack: 70,
-      defense: 80,
-      type: ["Grass", "Poison"]
-    )
+    let pokemon = samplePokemon
     PokemonRowView(pokemon: pokemon)
   }
 }

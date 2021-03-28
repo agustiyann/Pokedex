@@ -30,6 +30,12 @@ struct InfoView: View {
         }
       }
     }
+    .navigationBarItems(
+      trailing: Text("#\(self.presenter.pokemon.num)")
+        .foregroundColor(.white)
+        .font(.title3)
+        .bold()
+    )
   }
 
 }
@@ -49,7 +55,7 @@ extension InfoView {
   }
 
   var content: some View {
-    VStack(alignment: .center, spacing: 15) {
+    VStack(alignment: .center, spacing: 10) {
       Text(self.presenter.pokemon.name)
         .font(.title)
         .bold()
@@ -65,6 +71,41 @@ extension InfoView {
             .cornerRadius(40)
         }
       }
+
+      HStack(alignment: .center) {
+        Spacer()
+        VStack(alignment: .center, spacing: 10) {
+          Text(self.presenter.pokemon.height)
+            .font(.title3)
+            .bold()
+          Text("Height")
+            .foregroundColor(.gray)
+        }
+        Spacer()
+        VStack(alignment: .center, spacing: 10) {
+          Text(self.presenter.pokemon.weight)
+            .font(.title3)
+            .bold()
+          Text("Weight")
+            .foregroundColor(.gray)
+        }
+        Spacer()
+      }
+      .padding(.vertical)
+
+      Text("About")
+        .font(.title3)
+        .bold()
+      Text(self.presenter.pokemon.description)
+        .fixedSize(horizontal: false, vertical: true)
+        .padding(.horizontal)
+
+      Text("Stats")
+        .font(.title3)
+        .bold()
+        .padding(.top)
+
+      BarChartView(pokemon: self.presenter.pokemon)
 
       HStack { Spacer() }
     }
