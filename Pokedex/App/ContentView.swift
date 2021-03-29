@@ -12,10 +12,23 @@ struct ContentView: View {
   @EnvironmentObject var homePresenter: HomePresenter
 
   var body: some View {
-    NavigationView {
+    TabView {
       HomeView(presenter: homePresenter)
+        .tabItem {
+          Image(systemName: "house.fill")
+          Text("Home")
+        }
+      FavoriteView()
+        .tabItem {
+            Image(systemName: "heart.fill")
+            Text("Favorite")
+        }
+      AboutView()
+        .tabItem {
+            Image(systemName: "person.circle.fill")
+            Text("Profile")
+        }
     }
-    .accentColor(.gray)
   }
 }
 

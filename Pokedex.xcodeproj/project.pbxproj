@@ -22,6 +22,8 @@
 		CF38D8FB260F72FF00307225 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF38D8FA260F72FF00307225 /* InfoView.swift */; };
 		CF38D90F260F8A4200307225 /* Color+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF38D90E260F8A4200307225 /* Color+Ext.swift */; };
 		CF561DE8261097AB00607340 /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF561DE7261097AB00607340 /* CustomButtonStyle.swift */; };
+		CF67FAAB26117DFC00771EA6 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67FAAA26117DFC00771EA6 /* FavoriteView.swift */; };
+		CF67FAB126117E4C00771EA6 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67FAB026117E4C00771EA6 /* AboutView.swift */; };
 		CFAE5573260F0D7800F220FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5572260F0D7800F220FF /* AppDelegate.swift */; };
 		CFAE5575260F0D7800F220FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5574260F0D7800F220FF /* SceneDelegate.swift */; };
 		CFAE5577260F0D7800F220FF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5576260F0D7800F220FF /* ContentView.swift */; };
@@ -73,6 +75,8 @@
 		CF38D8FA260F72FF00307225 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		CF38D90E260F8A4200307225 /* Color+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Ext.swift"; sourceTree = "<group>"; };
 		CF561DE7261097AB00607340 /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
+		CF67FAAA26117DFC00771EA6 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
+		CF67FAB026117E4C00771EA6 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		CFAE556F260F0D7800F220FF /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFAE5572260F0D7800F220FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFAE5574260F0D7800F220FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -168,6 +172,46 @@
 			isa = PBXGroup;
 			children = (
 				CF38D8FA260F72FF00307225 /* InfoView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF67FAA626117D3C00771EA6 /* Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				CF67FAA926117DC500771EA6 /* Presenter */,
+				CF67FAA826117DB500771EA6 /* View */,
+			);
+			path = Favorite;
+			sourceTree = "<group>";
+		};
+		CF67FAA726117D4500771EA6 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				CF67FAAF26117E3F00771EA6 /* View */,
+			);
+			path = About;
+			sourceTree = "<group>";
+		};
+		CF67FAA826117DB500771EA6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CF67FAAA26117DFC00771EA6 /* FavoriteView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CF67FAA926117DC500771EA6 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CF67FAAF26117E3F00771EA6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CF67FAB026117E4C00771EA6 /* AboutView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -363,6 +407,8 @@
 		CFAE55F9260F28D100F220FF /* Modul */ = {
 			isa = PBXGroup;
 			children = (
+				CF67FAA726117D4500771EA6 /* About */,
+				CF67FAA626117D3C00771EA6 /* Favorite */,
 				CFAE55FA260F28E000F220FF /* Home */,
 				CF38D8EA260F6F1D00307225 /* Info */,
 			);
@@ -585,6 +631,7 @@
 				CFAE5610260F2C8500F220FF /* HomePresenter.swift in Sources */,
 				CFAE55E5260F1CE400F220FF /* PokemonRepository.swift in Sources */,
 				CF38D90F260F8A4200307225 /* Color+Ext.swift in Sources */,
+				CF67FAAB26117DFC00771EA6 /* FavoriteView.swift in Sources */,
 				CFAE55D7260F18F200F220FF /* APICall.swift in Sources */,
 				CF38D8B3260F31EF00307225 /* Injection.swift in Sources */,
 				CF38D8ED260F6FA600307225 /* InfoPresenter.swift in Sources */,
@@ -598,6 +645,7 @@
 				CF06C4FE26105D97007F99C9 /* LocalDataSource.swift in Sources */,
 				CFAE55F4260F26AE00F220FF /* PokemonMapper.swift in Sources */,
 				CF38D8E6260F6C6700307225 /* InfoInteractor.swift in Sources */,
+				CF67FAB126117E4C00771EA6 /* AboutView.swift in Sources */,
 				CF06C50326105DAA007F99C9 /* PokemonEntity.swift in Sources */,
 				CF38D8F5260F725B00307225 /* HomeRouter.swift in Sources */,
 				CFAE5608260F2B6200F220FF /* HomeInteractor.swift in Sources */,
