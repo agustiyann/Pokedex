@@ -14,6 +14,8 @@ protocol PokemonRepositoryProtocol {
   func getPokemon(by num: String) -> AnyPublisher<PokemonModel, Error>
   func addPokemonFavorite(from pokemon: PokemonModel) -> AnyPublisher<Bool, Error>
   func removePokemonFavorite(from pokemon: PokemonModel) -> AnyPublisher<Bool, Error>
+  func getFavoritePokemonList() -> AnyPublisher<[PokemonModel], Error>
+
 }
 
 final class PokemonRepository: NSObject {
@@ -55,6 +57,12 @@ extension PokemonRepository: PokemonRepositoryProtocol {
   func removePokemonFavorite(from pokemon: PokemonModel) -> AnyPublisher<Bool, Error> {
     let pokemonEntity = PokemonMapper.mapPokemonDomainToEntity(input: pokemon)
     return self.locale.removePokemonFavorite(from: pokemonEntity)
+      .eraseToAnyPublisher()
+  }
+
+  func getFavoritePokemonList() -> AnyPublisher<[PokemonModel], Error> {
+    return self.locale.getFavoritePokemonList()
+      .map { PokemonMapper.mapPokemonEntitiesToDomains(input: $0) }
       .eraseToAnyPublisher()
   }
 

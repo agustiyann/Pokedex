@@ -15,6 +15,8 @@ protocol LocalDataSourceProtocol: class {
   func getArticle(by num: String) -> AnyPublisher<PokemonEntity, Error>
   func addPokemonFavorite(from pokemon: PokemonEntity) -> AnyPublisher<Bool, Error>
   func removePokemonFavorite(from pokemon: PokemonEntity) -> AnyPublisher<Bool, Error>
+  func getFavoritePokemonList() -> AnyPublisher<[PokemonEntity], Error>
+
 }
 
 final class LocalDataSource: NSObject {
@@ -112,6 +114,21 @@ extension LocalDataSource: LocalDataSourceProtocol {
         } catch {
           completion(.failure(DatabaseError.requestFailed))
         }
+      } else {
+        completion(.failure(DatabaseError.invalidInstance))
+      }
+    }
+    .eraseToAnyPublisher()
+  }
+
+  func getFavoritePokemonList() -> AnyPublisher<[PokemonEntity], Error> {
+    return Future<[PokemonEntity], Error> { completion in
+      if let realm = self.realm {
+        let pokemonEntities = {
+          realm.objects(PokemonEntity.self)
+            .filter("favoriteState = \(true)")
+        }()
+        completion(.success(pokemonEntities.toArray(ofType: PokemonEntity.self)))
       } else {
         completion(.failure(DatabaseError.invalidInstance))
       }

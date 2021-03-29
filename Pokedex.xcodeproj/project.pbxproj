@@ -24,6 +24,9 @@
 		CF561DE8261097AB00607340 /* CustomButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF561DE7261097AB00607340 /* CustomButtonStyle.swift */; };
 		CF67FAAB26117DFC00771EA6 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67FAAA26117DFC00771EA6 /* FavoriteView.swift */; };
 		CF67FAB126117E4C00771EA6 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67FAB026117E4C00771EA6 /* AboutView.swift */; };
+		CF67FAB9261182D700771EA6 /* FavoriteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67FAB8261182D700771EA6 /* FavoriteInteractor.swift */; };
+		CF67FABE2611862100771EA6 /* FavoritePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67FABD2611862100771EA6 /* FavoritePresenter.swift */; };
+		CF67FAC426118CC200771EA6 /* FavoriteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF67FAC326118CC200771EA6 /* FavoriteRouter.swift */; };
 		CFAE5573260F0D7800F220FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5572260F0D7800F220FF /* AppDelegate.swift */; };
 		CFAE5575260F0D7800F220FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5574260F0D7800F220FF /* SceneDelegate.swift */; };
 		CFAE5577260F0D7800F220FF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5576260F0D7800F220FF /* ContentView.swift */; };
@@ -77,6 +80,9 @@
 		CF561DE7261097AB00607340 /* CustomButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonStyle.swift; sourceTree = "<group>"; };
 		CF67FAAA26117DFC00771EA6 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 		CF67FAB026117E4C00771EA6 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		CF67FAB8261182D700771EA6 /* FavoriteInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteInteractor.swift; sourceTree = "<group>"; };
+		CF67FABD2611862100771EA6 /* FavoritePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePresenter.swift; sourceTree = "<group>"; };
+		CF67FAC326118CC200771EA6 /* FavoriteRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteRouter.swift; sourceTree = "<group>"; };
 		CFAE556F260F0D7800F220FF /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFAE5572260F0D7800F220FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CFAE5574260F0D7800F220FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -180,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				CF67FAA926117DC500771EA6 /* Presenter */,
+				CF67FAC226118C9F00771EA6 /* Router */,
 				CF67FAA826117DB500771EA6 /* View */,
 			);
 			path = Favorite;
@@ -204,6 +211,7 @@
 		CF67FAA926117DC500771EA6 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				CF67FABD2611862100771EA6 /* FavoritePresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -214,6 +222,14 @@
 				CF67FAB026117E4C00771EA6 /* AboutView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		CF67FAC226118C9F00771EA6 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				CF67FAC326118CC200771EA6 /* FavoriteRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		CFAE5566260F0D7800F220FF = {
@@ -455,6 +471,7 @@
 			children = (
 				CFAE5607260F2B6200F220FF /* HomeInteractor.swift */,
 				CF38D8E5260F6C6700307225 /* InfoInteractor.swift */,
+				CF67FAB8261182D700771EA6 /* FavoriteInteractor.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -641,10 +658,13 @@
 				CF38D8FB260F72FF00307225 /* InfoView.swift in Sources */,
 				CFAE5575260F0D7800F220FF /* SceneDelegate.swift in Sources */,
 				CFAE55EB260F244900F220FF /* PokemonModel.swift in Sources */,
+				CF67FAB9261182D700771EA6 /* FavoriteInteractor.swift in Sources */,
 				CF561DE8261097AB00607340 /* CustomButtonStyle.swift in Sources */,
+				CF67FAC426118CC200771EA6 /* FavoriteRouter.swift in Sources */,
 				CF06C4FE26105D97007F99C9 /* LocalDataSource.swift in Sources */,
 				CFAE55F4260F26AE00F220FF /* PokemonMapper.swift in Sources */,
 				CF38D8E6260F6C6700307225 /* InfoInteractor.swift in Sources */,
+				CF67FABE2611862100771EA6 /* FavoritePresenter.swift in Sources */,
 				CF67FAB126117E4C00771EA6 /* AboutView.swift in Sources */,
 				CF06C50326105DAA007F99C9 /* PokemonEntity.swift in Sources */,
 				CF38D8F5260F725B00307225 /* HomeRouter.swift in Sources */,

@@ -1,30 +1,30 @@
 //
-//  HomePresenter.swift
+//  FavoritePresenter.swift
 //  Pokedex
 //
-//  Created by Agus Tiyansyah Syam on 27/03/21.
+//  Created by Agus Tiyansyah Syam on 29/03/21.
 //
 
 import SwiftUI
 import Combine
 
-class HomePresenter: ObservableObject {
+class FavoritePresenter: ObservableObject {
 
   private var cancellables: Set<AnyCancellable> = []
-  private let router = HomeRouter()
-  private let homeUseCase: HomeUseCase
+  private let favoriteUseCase: FavoriteUseCase
+  private let router = FavoriteRouter()
 
   @Published var pokemonList = [PokemonModel]()
   @Published var errorMessage = ""
   @Published var loadingState = false
 
-  init(homeUseCase: HomeUseCase) {
-    self.homeUseCase = homeUseCase
+  init(favoriteUseCase: FavoriteUseCase) {
+    self.favoriteUseCase = favoriteUseCase
   }
 
-  func getPokemonList() {
+  func getFavoriteList() {
     loadingState = true
-    homeUseCase.getPokemonList()
+    favoriteUseCase.getFavoritePokemonList()
       .receive(on: RunLoop.main)
       .sink(receiveCompletion: { completion in
         switch completion {
@@ -33,8 +33,8 @@ class HomePresenter: ObservableObject {
         case .finished:
           self.loadingState = false
         }
-      }, receiveValue: { pokemons in
-        self.pokemonList = pokemons
+      }, receiveValue: { pokemonList in
+        self.pokemonList = pokemonList
       }).store(in: &cancellables)
   }
 

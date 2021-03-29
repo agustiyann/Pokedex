@@ -30,9 +30,9 @@ struct InfoView: View {
         }
       }
     }
-    .onAppear {
+    .onAppear(perform: {
       self.presenter.getPokemon()
-    }
+    })
     .navigationBarItems(
       trailing: Text("#\(self.presenter.pokemon.num)")
         .foregroundColor(.white)

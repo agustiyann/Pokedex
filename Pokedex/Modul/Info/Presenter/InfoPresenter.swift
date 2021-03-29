@@ -36,8 +36,7 @@ class InfoPresenter: ObservableObject {
         }
       }, receiveValue: { pokemon in
         self.pokemon = pokemon
-      })
-      .store(in: &cancellables)
+      }).store(in: &cancellables)
   }
 
   func addFavorite() {
@@ -52,8 +51,7 @@ class InfoPresenter: ObservableObject {
         }
       }, receiveValue: { value in
         self.pokemon.favoriteState = value
-      })
-      .store(in: &cancellables)
+      }).store(in: &cancellables)
   }
 
   func unFavorite() {
@@ -68,8 +66,7 @@ class InfoPresenter: ObservableObject {
         }
       }, receiveValue: { value in
         self.pokemon.favoriteState = value
-      })
-      .store(in: &cancellables)
+      }).store(in: &cancellables)
   }
 
 }

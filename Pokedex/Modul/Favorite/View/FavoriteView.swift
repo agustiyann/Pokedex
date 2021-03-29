@@ -8,16 +8,37 @@
 import SwiftUI
 
 struct FavoriteView: View {
-    var body: some View {
-      NavigationView {
-        Text("Favorite")
-          .navigationBarTitle(Text("Favorite"), displayMode: .inline)
+
+  @ObservedObject var presenter: FavoritePresenter
+
+  var body: some View {
+    ZStack {
+      if presenter.loadingState {
+        VStack {
+          Text("Loading...")
+        }
+      } else {
+        if presenter.pokemonList.isEmpty {
+          VStack {
+            Spacer()
+            Text("Favorite List is Empty")
+            Spacer()
+          }
+        } else {
+          ScrollView(.vertical, showsIndicators: false) {
+            ForEach(self.presenter.pokemonList, id: \.id) { pokemon in
+              ZStack {
+                self.presenter.linkBuilder(for: pokemon) {
+                  PokemonRowView(pokemon: pokemon)
+                }.buttonStyle(PlainButtonStyle())
+              }.padding(8)
+            }
+          }
+        }
       }
     }
-}
-
-struct FavoriteView_Previews: PreviewProvider {
-    static var previews: some View {
-        FavoriteView()
+    .onAppear {
+      self.presenter.getFavoriteList()
     }
+  }
 }

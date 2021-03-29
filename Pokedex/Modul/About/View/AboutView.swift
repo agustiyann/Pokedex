@@ -9,10 +9,7 @@ import SwiftUI
 
 struct AboutView: View {
     var body: some View {
-      NavigationView {
-        Text("About")
-          .navigationBarTitle(Text("About"), displayMode: .inline)
-      }
+      Text("About")
     }
 }
 
