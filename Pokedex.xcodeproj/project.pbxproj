@@ -165,6 +165,14 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
+		CF0D2EDC26123EAA003BEE88 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CF0D2EC526120B32003BEE88 /* AboutPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		CF38D8EA260F6F1D00307225 /* Info */ = {
 			isa = PBXGroup;
 			children = (
@@ -203,8 +211,8 @@
 		CF67FAA726117D4500771EA6 /* About */ = {
 			isa = PBXGroup;
 			children = (
+				CF0D2EDC26123EAA003BEE88 /* Presenter */,
 				CF67FAAF26117E3F00771EA6 /* View */,
-				CF0D2EC526120B32003BEE88 /* AboutPresenter.swift */,
 			);
 			path = About;
 			sourceTree = "<group>";
