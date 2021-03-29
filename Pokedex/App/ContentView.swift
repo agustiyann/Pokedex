@@ -26,6 +26,7 @@ struct ContentView: View {
 
   @EnvironmentObject var homePresenter: HomePresenter
   @EnvironmentObject var favoritePresenter: FavoritePresenter
+  @EnvironmentObject var aboutPresenter: AboutPresenter
 
   @State var selectedTab = TabTag.first
 
@@ -42,7 +43,7 @@ struct ContentView: View {
               Image(systemName: "heart.fill")
               Text("Favorite")
           }.tag(TabTag.second)
-        AboutView()
+        AboutView(presenter: aboutPresenter)
           .tabItem {
               Image(systemName: "person.circle.fill")
               Text("Profile")

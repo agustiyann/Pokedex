@@ -21,10 +21,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     let homePresenter = HomePresenter(homeUseCase: homeUseCase)
     let favoritePresenter = FavoritePresenter(favoriteUseCase: favoriteUseCase)
+    let aboutPresenter = AboutPresenter()
 
     let contentView = ContentView()
       .environmentObject(homePresenter)
       .environmentObject(favoritePresenter)
+      .environmentObject(aboutPresenter)
 
     // Use a UIHostingController as window root view controller.
     if let windowScene = scene as? UIWindowScene {

@@ -9,20 +9,18 @@ import SwiftUI
 
 struct AboutView: View {
 
-  @AppStorage("name") var name = "Agus Tiyansyah Syam"
-  @AppStorage("about") var about = "IT Student - Aspiring iOS Developer"
-  @AppStorage("image") var image = UIImage(imageLiteralResourceName: "me").jpegData(compressionQuality: 1)!
+  @ObservedObject var presenter: AboutPresenter
 
   @State var linkEdit = false
 
   var body: some View {
     VStack(alignment: .center) {
       profileImage
-      Text(name)
+      Text(presenter.name)
         .font(.title3)
         .fontWeight(.bold)
         .padding(.top)
-      Text(about)
+      Text(presenter.about)
         .frame(minWidth: 0, maxWidth: .infinity)
         .multilineTextAlignment(.center)
         .padding(.horizontal)
@@ -35,9 +33,12 @@ struct AboutView: View {
 
       Spacer()
     }
+    .onAppear {
+      self.presenter.getProfile()
+    }
     .background(
       NavigationLink(
-        destination: EditAboutView(), isActive: $linkEdit) {}
+        destination: EditAboutView(presenter: presenter), isActive: $linkEdit) {}
     )
   }
 }
@@ -45,7 +46,7 @@ struct AboutView: View {
 extension AboutView {
 
   var profileImage: some View {
-    Image(uiImage: UIImage(data: self.image) ?? UIImage(imageLiteralResourceName: "me"))
+    Image(uiImage: UIImage(data: presenter.image) ?? UIImage(imageLiteralResourceName: "me"))
       .resizable()
       .scaledToFill()
       .frame(width: 150, height: 150, alignment: .center)
@@ -54,12 +55,4 @@ extension AboutView {
       .shadow(color: .black, radius: 5, x: 0.0, y: 0.0)
   }
 
-}
-
-struct AboutView_Previews: PreviewProvider {
-  static var previews: some View {
-    NavigationView {
-      AboutView()
-    }
-  }
 }
