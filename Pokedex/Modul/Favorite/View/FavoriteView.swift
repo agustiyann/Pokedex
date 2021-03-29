@@ -16,6 +16,7 @@ struct FavoriteView: View {
       if presenter.loadingState {
         VStack {
           Text("Loading...")
+          ActivityIndicator()
         }
       } else {
         if presenter.pokemonList.isEmpty {

@@ -16,6 +16,7 @@
 		CF0D2EC12612047A003BEE88 /* EditAboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0D2EC02612047A003BEE88 /* EditAboutView.swift */; };
 		CF0D2EC626120B32003BEE88 /* AboutPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0D2EC526120B32003BEE88 /* AboutPresenter.swift */; };
 		CF0D2ED0261218F0003BEE88 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0D2ECF261218F0003BEE88 /* ImagePicker.swift */; };
+		CF0D2ED8261223A6003BEE88 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF0D2ED7261223A6003BEE88 /* ActivityIndicator.swift */; };
 		CF38D8B3260F31EF00307225 /* Injection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF38D8B2260F31EF00307225 /* Injection.swift */; };
 		CF38D8B8260F3AFF00307225 /* PokemonRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF38D8B7260F3AFF00307225 /* PokemonRowView.swift */; };
 		CF38D8BE260F3B6B00307225 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = CF38D8BD260F3B6B00307225 /* SDWebImageSwiftUI */; };
@@ -76,6 +77,7 @@
 		CF0D2EC02612047A003BEE88 /* EditAboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAboutView.swift; sourceTree = "<group>"; };
 		CF0D2EC526120B32003BEE88 /* AboutPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutPresenter.swift; sourceTree = "<group>"; };
 		CF0D2ECF261218F0003BEE88 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		CF0D2ED7261223A6003BEE88 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		CF38D8B2260F31EF00307225 /* Injection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injection.swift; sourceTree = "<group>"; };
 		CF38D8B7260F3AFF00307225 /* PokemonRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonRowView.swift; sourceTree = "<group>"; };
 		CF38D8E5260F6C6700307225 /* InfoInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoInteractor.swift; sourceTree = "<group>"; };
@@ -425,6 +427,7 @@
 				CF06C4E826103669007F99C9 /* BarView.swift */,
 				CF561DE7261097AB00607340 /* CustomButtonStyle.swift */,
 				CF0D2ECF261218F0003BEE88 /* ImagePicker.swift */,
+				CF0D2ED7261223A6003BEE88 /* ActivityIndicator.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -665,6 +668,7 @@
 				CF38D8B3260F31EF00307225 /* Injection.swift in Sources */,
 				CF38D8ED260F6FA600307225 /* InfoPresenter.swift in Sources */,
 				CFDDDDE0260FC1E200F709C3 /* PokemonTypeColor.swift in Sources */,
+				CF0D2ED8261223A6003BEE88 /* ActivityIndicator.swift in Sources */,
 				CF06C4E926103669007F99C9 /* BarView.swift in Sources */,
 				CFAE5573260F0D7800F220FF /* AppDelegate.swift in Sources */,
 				CF38D8FB260F72FF00307225 /* InfoView.swift in Sources */,

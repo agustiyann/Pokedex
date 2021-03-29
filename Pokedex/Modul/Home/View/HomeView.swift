@@ -17,6 +17,7 @@ struct HomeView: View {
       if presenter.loadingState {
         VStack {
           Text("Loading...")
+          ActivityIndicator()
         }
       } else {
         ScrollView(.vertical, showsIndicators: false) {
