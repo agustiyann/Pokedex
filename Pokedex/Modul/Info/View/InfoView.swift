@@ -12,6 +12,8 @@ struct InfoView: View {
 
   @ObservedObject var presenter: InfoPresenter
 
+  @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+
   var body: some View {
     ZStack {
       if presenter.loadingState {
@@ -33,7 +35,9 @@ struct InfoView: View {
     .onAppear(perform: {
       self.presenter.getPokemon()
     })
+    .navigationBarBackButtonHidden(true)
     .navigationBarItems(
+      leading: backButton,
       trailing: Text("#\(self.presenter.pokemon.num)")
         .foregroundColor(.white)
         .font(.title3)
@@ -135,6 +139,21 @@ extension InfoView {
     .cornerRadius(40)
     .padding(.top, -40)
     .zIndex(-1)
+  }
+
+  var backButton: some View {
+    Button(action: {
+      presentationMode.wrappedValue.dismiss()
+    }, label: {
+      Image(systemName: "chevron.backward")
+        .foregroundColor(.black)
+        .padding(5)
+        .background(
+          Rectangle()
+            .cornerRadius(5)
+            .foregroundColor(.white)
+        )
+    })
   }
 
 }
