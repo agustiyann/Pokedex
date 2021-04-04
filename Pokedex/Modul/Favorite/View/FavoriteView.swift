@@ -27,12 +27,14 @@ struct FavoriteView: View {
           }
         } else {
           ScrollView(.vertical, showsIndicators: false) {
-            ForEach(self.presenter.pokemonList, id: \.id) { pokemon in
-              ZStack {
-                self.presenter.linkBuilder(for: pokemon) {
-                  PokemonRowView(pokemon: pokemon)
-                }.buttonStyle(PlainButtonStyle())
-              }.padding(8)
+            LazyVStack {
+              ForEach(self.presenter.pokemonList, id: \.id) { pokemon in
+                ZStack {
+                  self.presenter.linkBuilder(for: pokemon) {
+                    PokemonRowView(pokemon: pokemon)
+                  }.buttonStyle(PlainButtonStyle())
+                }.padding(8)
+              }
             }
           }
         }

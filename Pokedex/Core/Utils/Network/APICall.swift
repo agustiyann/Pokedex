@@ -9,7 +9,7 @@ import Foundation
 
 struct API {
 
-  static let baseUrl = "https://gist.githubusercontent.com/agustiyann/64c62e1d7affbdfd637123bab52f11e6/raw/"
+  static let baseUrl = "https://gist.githubusercontent.com/mrcsxsiq/b94dbe9ab67147b642baa9109ce16e44/raw/"
 
 }
 
@@ -26,7 +26,7 @@ enum Endpoints {
 
     public var url: String {
       switch self {
-      case .list: return "\(API.baseUrl)886e09ed7debc3a65fe2303b0abfded5d2e8a254/pokemon.json"
+      case .list: return "\(API.baseUrl)97811a5df2df7304b5bc4fbb9ee018a0339b8a38/"
       }
     }
   }

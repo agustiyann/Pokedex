@@ -11,9 +11,9 @@ import Combine
 protocol PokemonRepositoryProtocol {
 
   func getPokemonList() -> AnyPublisher<[PokemonModel], Error>
-  func getPokemon(by num: String) -> AnyPublisher<PokemonModel, Error>
+  func getPokemon(by id: String) -> AnyPublisher<PokemonModel, Error>
   func getFavoritePokemonList() -> AnyPublisher<[PokemonModel], Error>
-  func updateFavoritePokemon(by num: String) -> AnyPublisher<PokemonModel, Error>
+  func updateFavoritePokemon(by id: String) -> AnyPublisher<PokemonModel, Error>
 
 }
 
@@ -55,8 +55,8 @@ extension PokemonRepository: PokemonRepositoryProtocol {
       }.eraseToAnyPublisher()
   }
 
-  func getPokemon(by num: String) -> AnyPublisher<PokemonModel, Error> {
-    return self.locale.getPokemon(by: num)
+  func getPokemon(by id: String) -> AnyPublisher<PokemonModel, Error> {
+    return self.locale.getPokemon(by: id)
       .map { PokemonMapper.mapPokemonEntityToDomain(input: $0) }
       .eraseToAnyPublisher()
   }
@@ -67,8 +67,8 @@ extension PokemonRepository: PokemonRepositoryProtocol {
       .eraseToAnyPublisher()
   }
 
-  func updateFavoritePokemon(by num: String) -> AnyPublisher<PokemonModel, Error> {
-    return self.locale.updateFavoritePokemon(by: num)
+  func updateFavoritePokemon(by id: String) -> AnyPublisher<PokemonModel, Error> {
+    return self.locale.updateFavoritePokemon(by: id)
       .map { PokemonMapper.mapPokemonEntityToDomain(input: $0) }
       .eraseToAnyPublisher()
   }

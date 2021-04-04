@@ -27,7 +27,7 @@ struct PokemonRowView: View {
 extension PokemonRowView {
 
   var imagePokemon: some View {
-    WebImage(url: URL(string: self.pokemon.img))
+    WebImage(url: URL(string: self.pokemon.imageurl))
       .resizable()
       .indicator(.activity)
       .transition(.fade(duration: 0.5))

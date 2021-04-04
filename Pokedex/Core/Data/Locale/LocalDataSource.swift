@@ -13,9 +13,9 @@ protocol LocalDataSourceProtocol: class {
 
   func addPokemons(from pokemons: [PokemonEntity]) -> AnyPublisher<Bool, Error>
   func getPokemons() -> AnyPublisher<[PokemonEntity], Error>
-  func getPokemon(by num: String) -> AnyPublisher<PokemonEntity, Error>
+  func getPokemon(by id: String) -> AnyPublisher<PokemonEntity, Error>
   func getFavoritePokemonList() -> AnyPublisher<[PokemonEntity], Error>
-  func updateFavoritePokemon(by num: String) -> AnyPublisher<PokemonEntity, Error>
+  func updateFavoritePokemon(by id: String) -> AnyPublisher<PokemonEntity, Error>
 
 }
 
@@ -58,7 +58,7 @@ extension LocalDataSource: LocalDataSourceProtocol {
       if let realm = self.realm {
         let pokemons: Results<PokemonEntity> = {
           realm.objects(PokemonEntity.self)
-            .sorted(byKeyPath: "num", ascending: true)
+            .sorted(byKeyPath: "id", ascending: true)
         }()
         completion(.success(pokemons.toArray(ofType: PokemonEntity.self)))
       } else {
@@ -67,12 +67,12 @@ extension LocalDataSource: LocalDataSourceProtocol {
     }.eraseToAnyPublisher()
   }
 
-  func getPokemon(by num: String) -> AnyPublisher<PokemonEntity, Error> {
+  func getPokemon(by id: String) -> AnyPublisher<PokemonEntity, Error> {
     return Future<PokemonEntity, Error> { completion in
       if let realm = self.realm {
         let pokemons: Results<PokemonEntity> = {
           realm.objects(PokemonEntity.self)
-            .filter("num = '\(num)'")
+            .filter("id = '\(id)'")
         }()
 
         guard let pokemon = pokemons.first else {
@@ -93,7 +93,7 @@ extension LocalDataSource: LocalDataSourceProtocol {
         let pokemonEntities = {
           realm.objects(PokemonEntity.self)
             .filter("favoriteState = \(true)")
-            .sorted(byKeyPath: "num", ascending: true)
+            .sorted(byKeyPath: "id", ascending: true)
         }()
         completion(.success(pokemonEntities.toArray(ofType: PokemonEntity.self)))
       } else {
@@ -103,10 +103,10 @@ extension LocalDataSource: LocalDataSourceProtocol {
     .eraseToAnyPublisher()
   }
 
-  func updateFavoritePokemon(by num: String) -> AnyPublisher<PokemonEntity, Error> {
+  func updateFavoritePokemon(by id: String) -> AnyPublisher<PokemonEntity, Error> {
     return Future<PokemonEntity, Error> { completion in
       if let realm = self.realm, let pokemonEntity = {
-        realm.objects(PokemonEntity.self).filter("num = '\(num)'")
+        realm.objects(PokemonEntity.self).filter("id = '\(id)'")
       }().first {
         do {
           try realm.write {

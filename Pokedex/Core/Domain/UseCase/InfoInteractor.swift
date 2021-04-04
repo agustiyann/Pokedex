@@ -29,11 +29,11 @@ class InfoInteractor: InfoUseCase {
   }
 
   func getPokemon() -> AnyPublisher<PokemonModel, Error> {
-    return repository.getPokemon(by: pokemon.num)
+    return repository.getPokemon(by: pokemon.id)
   }
 
   func updateFavoritePokemon() -> AnyPublisher<PokemonModel, Error> {
-    return repository.updateFavoritePokemon(by: pokemon.num)
+    return repository.updateFavoritePokemon(by: pokemon.id)
   }
 
 }

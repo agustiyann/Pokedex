@@ -38,7 +38,7 @@ struct InfoView: View {
     .navigationBarBackButtonHidden(true)
     .navigationBarItems(
       leading: backButton,
-      trailing: Text("#\(self.presenter.pokemon.num)")
+      trailing: Text("\(self.presenter.pokemon.id)")
         .foregroundColor(.white)
         .font(.title3)
         .bold()
@@ -51,7 +51,7 @@ struct InfoView: View {
 extension InfoView {
 
   var imagePokemon: some View {
-    WebImage(url: URL(string: self.presenter.pokemon.img))
+    WebImage(url: URL(string: self.presenter.pokemon.imageurl))
       .resizable()
       .indicator(.activity)
       .transition(.fade(duration: 0.5))

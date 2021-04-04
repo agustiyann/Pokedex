@@ -25,10 +25,10 @@ extension RemoteDataSource: RemoteDataSourceProtocol {
     return Future<[PokemonResponse], Error> { completion in
       guard let url = URL(string: Endpoints.Gets.list.url) else { return }
 
-      AF.request(url).validate().responseDecodable(of: PokemonsResponse.self) { response in
+      AF.request(url).validate().responseDecodable(of: [PokemonResponse].self) { response in
         switch response.result {
         case .success(let value):
-          completion(.success(value.results))
+          completion(.success(value))
         case .failure:
           completion(.failure(URLError.invalidResponse))
         }

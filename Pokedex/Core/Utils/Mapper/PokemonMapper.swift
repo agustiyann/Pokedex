@@ -13,18 +13,31 @@ final class PokemonMapper {
   static func mapPokemonResponsesToDomains(input pokemonResponses: [PokemonResponse]) -> [PokemonModel] {
     return pokemonResponses.map { result in
       return PokemonModel(
-        id: result.id ?? 0,
+        id: result.id ?? "#000",
         name: result.name ?? "Unknow",
-        num: result.num ?? "000",
         description: result.description ?? "Unknow",
-        img: result.img ?? "Unknow",
+        imageurl: result.imageurl ?? "Unknow",
         height: result.height ?? "Unknow",
         weight: result.weight ?? "Unknow",
+        hp: result.hp ?? 0,
         attack: result.attack ?? 0,
         defense: result.defense ?? 0,
+        specialAttack: result.specialAttack ?? 0,
+        specialDefense: result.specialDefense ?? 0,
+        speed: result.speed ?? 0,
+        total: result.total ?? 0,
+        malePercentage: result.malePercentage ?? "Unknow",
+        femalePercentage: result.femalePercentage ?? "Unknow",
+        cycles: result.cycles ?? "Unknow",
+        eggGroups: result.eggGroups ?? "Unknow",
+
         type: result.type.map { type in
           return type
         },
+        weaknesses: result.weaknesses.map { weaknes in
+          return weaknes
+        },
+
         favoriteState: false
       )
     }
@@ -33,19 +46,31 @@ final class PokemonMapper {
   static func mapPokemonResponsesToEntities(input pokemonResponses: [PokemonResponse]) -> [PokemonEntity] {
     return pokemonResponses.map { result in
       let newPokemon = PokemonEntity()
-      newPokemon.id = result.id ?? 0
+      newPokemon.id = result.id ?? "#000"
       newPokemon.name = result.name ?? "Unknow"
-      newPokemon.num = result.num ?? "000"
       newPokemon.desc = result.description ?? "Unknow"
-      newPokemon.img = result.img ?? "Unknow"
+      newPokemon.image = result.imageurl ?? "Unknow"
       newPokemon.height = result.height ?? "Unknow"
       newPokemon.weight = result.weight ?? "Unknow"
+      newPokemon.hp = result.hp ?? 0
       newPokemon.attack = result.attack ?? 0
       newPokemon.defense = result.defense ?? 0
+      newPokemon.specialAttack = result.specialAttack ?? 0
+      newPokemon.specialDefense = result.specialDefense ?? 0
+      newPokemon.speed = result.speed ?? 0
+      newPokemon.total = result.total ?? 0
+      newPokemon.malePercentage = result.malePercentage ?? "Unknow"
+      newPokemon.femalePercentage = result.femalePercentage ?? "Unknow"
+      newPokemon.cycles = result.cycles ?? "Unknow"
+      newPokemon.eggGroups = result.eggGroups ?? "Unknow"
       newPokemon.favoriteState = false
 
       for type in result.type {
         newPokemon.type.append(type)
+      }
+
+      for weaknes in result.weaknesses {
+        newPokemon.weaknesses.append(weaknes)
       }
 
       return newPokemon
@@ -57,56 +82,92 @@ final class PokemonMapper {
       return PokemonModel(
         id: result.id,
         name: result.name,
-        num: result.num,
         description: result.desc,
-        img: result.img,
+        imageurl: result.image,
         height: result.height,
         weight: result.weight,
+        hp: result.hp,
         attack: result.attack,
         defense: result.defense,
+        specialAttack: result.specialAttack,
+        specialDefense: result.specialDefense,
+        speed: result.speed,
+        total: result.total,
+        malePercentage: result.malePercentage,
+        femalePercentage: result.femalePercentage,
+        cycles: result.cycles,
+        eggGroups: result.eggGroups,
+
         type: result.type.map { type in
           return type
+        },
+        weaknesses: result.weaknesses.map { weaknes in
+          return weaknes
         },
         favoriteState: result.favoriteState
       )
     }
   }
 
-  static func mapPokemonDomainToEntity(input pokemonModel: PokemonModel) -> PokemonEntity {
+  static func mapPokemonDomainToEntity(input result: PokemonModel) -> PokemonEntity {
     let newPokemon = PokemonEntity()
-    newPokemon.id = pokemonModel.id
-    newPokemon.name = pokemonModel.name
-    newPokemon.num = pokemonModel.num
-    newPokemon.desc = pokemonModel.description
-    newPokemon.img = pokemonModel.img
-    newPokemon.height = pokemonModel.height
-    newPokemon.weight = pokemonModel.weight
-    newPokemon.attack = pokemonModel.attack
-    newPokemon.defense = pokemonModel.defense
+    newPokemon.id = result.id
+    newPokemon.name = result.name
+    newPokemon.desc = result.description
+    newPokemon.image = result.imageurl
+    newPokemon.height = result.height
+    newPokemon.weight = result.weight
+    newPokemon.hp = result.hp
+    newPokemon.attack = result.attack
+    newPokemon.defense = result.defense
+    newPokemon.specialAttack = result.specialAttack
+    newPokemon.specialDefense = result.specialDefense
+    newPokemon.speed = result.speed
+    newPokemon.total = result.total
+    newPokemon.malePercentage = result.malePercentage
+    newPokemon.femalePercentage = result.femalePercentage
+    newPokemon.cycles = result.cycles
+    newPokemon.eggGroups = result.eggGroups
     newPokemon.favoriteState = false
 
-    for type in pokemonModel.type {
+    for type in result.type {
       newPokemon.type.append(type)
+    }
+
+    for weaknes in result.weaknesses {
+      newPokemon.weaknesses.append(weaknes)
     }
 
     return newPokemon
   }
 
-  static func mapPokemonEntityToDomain(input pokemonEntity: PokemonEntity) -> PokemonModel {
+  static func mapPokemonEntityToDomain(input result: PokemonEntity) -> PokemonModel {
     return PokemonModel(
-      id: pokemonEntity.id,
-      name: pokemonEntity.name,
-      num: pokemonEntity.num,
-      description: pokemonEntity.desc,
-      img: pokemonEntity.img,
-      height: pokemonEntity.height,
-      weight: pokemonEntity.weight,
-      attack: pokemonEntity.attack,
-      defense: pokemonEntity.defense,
-      type: pokemonEntity.type.map { type in
+      id: result.id,
+      name: result.name,
+      description: result.desc,
+      imageurl: result.image,
+      height: result.height,
+      weight: result.weight,
+      hp: result.hp,
+      attack: result.attack,
+      defense: result.defense,
+      specialAttack: result.specialAttack,
+      specialDefense: result.specialDefense,
+      speed: result.speed,
+      total: result.total,
+      malePercentage: result.malePercentage,
+      femalePercentage: result.femalePercentage,
+      cycles: result.cycles,
+      eggGroups: result.eggGroups,
+
+      type: result.type.map { type in
         return type
       },
-      favoriteState: pokemonEntity.favoriteState
+      weaknesses: result.weaknesses.map { weaknes in
+        return weaknes
+      },
+      favoriteState: result.favoriteState
     )
   }
 

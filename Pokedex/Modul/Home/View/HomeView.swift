@@ -21,18 +21,22 @@ struct HomeView: View {
         }
       } else {
         ScrollView(.vertical, showsIndicators: false) {
-          ForEach(self.presenter.pokemonList, id: \.id) { pokemon in
-            ZStack {
-              self.presenter.linkBuilder(for: pokemon) {
-                PokemonRowView(pokemon: pokemon)
-              }.buttonStyle(PlainButtonStyle())
-            }.padding(8)
+          LazyVStack {
+            ForEach(self.presenter.pokemonList, id: \.id) { pokemon in
+              ZStack {
+                self.presenter.linkBuilder(for: pokemon) {
+                  PokemonRowView(pokemon: pokemon)
+                }.buttonStyle(PlainButtonStyle())
+              }.padding(8)
+            }
           }
         }
       }
     }
     .onAppear {
-      self.presenter.getPokemonList()
+      if self.presenter.pokemonList.isEmpty {
+        self.presenter.getPokemonList()
+      }
     }
   }
 
