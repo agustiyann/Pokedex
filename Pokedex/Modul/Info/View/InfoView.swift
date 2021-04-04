@@ -22,8 +22,10 @@ struct InfoView: View {
         }
       } else {
         ZStack {
-          LinearGradient(gradient: Gradient(colors: [Color.random, Color.white]), startPoint: .top, endPoint: .bottom)
-            .ignoresSafeArea()
+          LinearGradient(
+            gradient: Gradient(colors: [Color.backgroundType(type: self.presenter.pokemon.type[0]), Color.white]),
+            startPoint: .top, endPoint: .bottom
+          ).ignoresSafeArea()
           Color.white.offset(y: 300)
           ScrollView(.vertical, showsIndicators: false) {
             imagePokemon

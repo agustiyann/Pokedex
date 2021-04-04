@@ -74,14 +74,6 @@ extension Color {
     }
   }
 
-  static var random: Color {
-    return Color(
-      red: .random(in: 0...1),
-      green: .random(in: 0...1),
-      blue: .random(in: 0...1)
-    )
-  }
-
   static func backgroundType(type: String) -> Color {
     switch type {
     case "Bug": return Color(hex: "#A8B820")

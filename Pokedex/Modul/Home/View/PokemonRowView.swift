@@ -18,7 +18,7 @@ struct PokemonRowView: View {
       content
     }
     .frame(width: UIScreen.main.bounds.width - 32, height: 250)
-    .background(Color.random)
+    .background(Color.backgroundType(type: self.pokemon.type[0]))
     .cornerRadius(30)
   }
 
