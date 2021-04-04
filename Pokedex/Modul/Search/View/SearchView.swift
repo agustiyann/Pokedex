@@ -20,11 +20,11 @@ struct SearchView: View {
         if presenter.isLoading {
           loadingIndicator
         } else if presenter.name.isEmpty {
-          Text("Empty")
+          emptyName
         } else if presenter.pokemons.isEmpty {
-          Text("Not Found")
+          emptyPokemons
         } else if presenter.isError {
-          Text("Error")
+          errorIndicator
         } else {
           ScrollView(.vertical, showsIndicators: false) {
             LazyVStack {
@@ -53,6 +53,27 @@ extension SearchView {
         ActivityIndicator()
       }
     }
+  }
+
+  var errorIndicator: some View {
+    CustomEmptyView(
+      image: "pokeball",
+      title: presenter.errorMessage
+    ).offset(y: 80)
+  }
+
+  var emptyName: some View {
+    CustomEmptyView(
+      image: "pokeball",
+      title: "Come on, find your favorite Pokemon!"
+    ).offset(y: 50)
+  }
+
+  var emptyPokemons: some View {
+    CustomEmptyView(
+      image: "pokeball",
+      title: "Data not found"
+    ).offset(y: 80)
   }
 
 }
