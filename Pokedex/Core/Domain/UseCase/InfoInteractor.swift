@@ -9,10 +9,9 @@ import Foundation
 import Combine
 
 protocol InfoUseCase {
-  func getPokemonInfo() -> PokemonModel
+  func getPokemon() -> PokemonModel
   func getPokemon() -> AnyPublisher<PokemonModel, Error>
-  func addPokemonFavorite() -> AnyPublisher<Bool, Error>
-  func removePokemonFavorite() -> AnyPublisher<Bool, Error>
+  func updateFavoritePokemon() -> AnyPublisher<PokemonModel, Error>
 }
 
 class InfoInteractor: InfoUseCase {
@@ -25,7 +24,7 @@ class InfoInteractor: InfoUseCase {
     self.pokemon = pokemon
   }
 
-  func getPokemonInfo() -> PokemonModel {
+  func getPokemon() -> PokemonModel {
     return pokemon
   }
 
@@ -33,12 +32,8 @@ class InfoInteractor: InfoUseCase {
     return repository.getPokemon(by: pokemon.num)
   }
 
-  func addPokemonFavorite() -> AnyPublisher<Bool, Error> {
-    return repository.addPokemonFavorite(from: pokemon)
-  }
-
-  func removePokemonFavorite() -> AnyPublisher<Bool, Error> {
-    return repository.removePokemonFavorite(from: pokemon)
+  func updateFavoritePokemon() -> AnyPublisher<PokemonModel, Error> {
+    return repository.updateFavoritePokemon(by: pokemon.num)
   }
 
 }

@@ -12,9 +12,8 @@ protocol PokemonRepositoryProtocol {
 
   func getPokemonList() -> AnyPublisher<[PokemonModel], Error>
   func getPokemon(by num: String) -> AnyPublisher<PokemonModel, Error>
-  func addPokemonFavorite(from pokemon: PokemonModel) -> AnyPublisher<Bool, Error>
-  func removePokemonFavorite(from pokemon: PokemonModel) -> AnyPublisher<Bool, Error>
   func getFavoritePokemonList() -> AnyPublisher<[PokemonModel], Error>
+  func updateFavoritePokemon(by num: String) -> AnyPublisher<PokemonModel, Error>
 
 }
 
@@ -37,32 +36,40 @@ final class PokemonRepository: NSObject {
 extension PokemonRepository: PokemonRepositoryProtocol {
 
   func getPokemonList() -> AnyPublisher<[PokemonModel], Error> {
-    return self.remote.getPokemonList()
-      .map { PokemonMapper.mapPokemonResponsesToDomains(input: $0) }
-      .eraseToAnyPublisher()
+    return self.locale.getPokemons()
+      .flatMap { result -> AnyPublisher<[PokemonModel], Error> in
+        if result.isEmpty {
+          return self.remote.getPokemonList()
+            .map { PokemonMapper.mapPokemonResponsesToEntities(input: $0) }
+            .catch { _ in self.locale.getPokemons() }
+            .flatMap { self.locale.addPokemons(from: $0) }
+            .filter { $0 }
+            .flatMap { _ in self.locale.getPokemons()
+              .map { PokemonMapper.mapPokemonEntitiesToDomains(input: $0) }
+            }.eraseToAnyPublisher()
+        } else {
+          return self.locale.getPokemons()
+            .map { PokemonMapper.mapPokemonEntitiesToDomains(input: $0) }
+            .eraseToAnyPublisher()
+        }
+      }.eraseToAnyPublisher()
   }
 
   func getPokemon(by num: String) -> AnyPublisher<PokemonModel, Error> {
-    return self.locale.getArticle(by: num)
+    return self.locale.getPokemon(by: num)
       .map { PokemonMapper.mapPokemonEntityToDomain(input: $0) }
-      .eraseToAnyPublisher()
-  }
-
-  func addPokemonFavorite(from pokemon: PokemonModel) -> AnyPublisher<Bool, Error> {
-    let pokemonEntity = PokemonMapper.mapPokemonDomainToEntity(input: pokemon)
-    return self.locale.addPokemonFavorite(from: pokemonEntity)
-      .eraseToAnyPublisher()
-  }
-
-  func removePokemonFavorite(from pokemon: PokemonModel) -> AnyPublisher<Bool, Error> {
-    let pokemonEntity = PokemonMapper.mapPokemonDomainToEntity(input: pokemon)
-    return self.locale.removePokemonFavorite(from: pokemonEntity)
       .eraseToAnyPublisher()
   }
 
   func getFavoritePokemonList() -> AnyPublisher<[PokemonModel], Error> {
     return self.locale.getFavoritePokemonList()
       .map { PokemonMapper.mapPokemonEntitiesToDomains(input: $0) }
+      .eraseToAnyPublisher()
+  }
+
+  func updateFavoritePokemon(by num: String) -> AnyPublisher<PokemonModel, Error> {
+    return self.locale.updateFavoritePokemon(by: num)
+      .map { PokemonMapper.mapPokemonEntityToDomain(input: $0) }
       .eraseToAnyPublisher()
   }
 

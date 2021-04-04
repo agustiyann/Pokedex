@@ -19,7 +19,7 @@ class InfoPresenter: ObservableObject {
 
   init(infoUseCase: InfoUseCase) {
     self.infoUseCase = infoUseCase
-    pokemon = infoUseCase.getPokemonInfo()
+    pokemon = infoUseCase.getPokemon()
   }
 
   func getPokemon() {
@@ -39,8 +39,8 @@ class InfoPresenter: ObservableObject {
       }).store(in: &cancellables)
   }
 
-  func addFavorite() {
-    infoUseCase.addPokemonFavorite()
+  func updateFavoritePokemon() {
+    infoUseCase.updateFavoritePokemon()
       .receive(on: RunLoop.main)
       .sink(receiveCompletion: { completion in
         switch completion {
@@ -49,24 +49,10 @@ class InfoPresenter: ObservableObject {
         case .finished:
           self.loadingState = false
         }
-      }, receiveValue: { value in
-        self.pokemon.favoriteState = value
-      }).store(in: &cancellables)
-  }
-
-  func unFavorite() {
-    infoUseCase.removePokemonFavorite()
-      .receive(on: RunLoop.main)
-      .sink(receiveCompletion: { completion in
-        switch completion {
-        case .failure:
-          self.errorMessage = String(describing: completion)
-        case .finished:
-          self.loadingState = false
-        }
-      }, receiveValue: { value in
-        self.pokemon.favoriteState = value
-      }).store(in: &cancellables)
+      }, receiveValue: { pokemon in
+        self.pokemon = pokemon
+      })
+      .store(in: &cancellables)
   }
 
 }

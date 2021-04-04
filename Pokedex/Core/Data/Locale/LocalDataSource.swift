@@ -12,10 +12,10 @@ import Combine
 protocol LocalDataSourceProtocol: class {
 
   func addPokemons(from pokemons: [PokemonEntity]) -> AnyPublisher<Bool, Error>
-  func getArticle(by num: String) -> AnyPublisher<PokemonEntity, Error>
-  func addPokemonFavorite(from pokemon: PokemonEntity) -> AnyPublisher<Bool, Error>
-  func removePokemonFavorite(from pokemon: PokemonEntity) -> AnyPublisher<Bool, Error>
+  func getPokemons() -> AnyPublisher<[PokemonEntity], Error>
+  func getPokemon(by num: String) -> AnyPublisher<PokemonEntity, Error>
   func getFavoritePokemonList() -> AnyPublisher<[PokemonEntity], Error>
+  func updateFavoritePokemon(by num: String) -> AnyPublisher<PokemonEntity, Error>
 
 }
 
@@ -53,7 +53,21 @@ extension LocalDataSource: LocalDataSourceProtocol {
     .eraseToAnyPublisher()
   }
 
-  func getArticle(by num: String) -> AnyPublisher<PokemonEntity, Error> {
+  func getPokemons() -> AnyPublisher<[PokemonEntity], Error> {
+    return Future<[PokemonEntity], Error> { completion in
+      if let realm = self.realm {
+        let pokemons: Results<PokemonEntity> = {
+          realm.objects(PokemonEntity.self)
+            .sorted(byKeyPath: "num", ascending: true)
+        }()
+        completion(.success(pokemons.toArray(ofType: PokemonEntity.self)))
+      } else {
+        completion(.failure(DatabaseError.invalidInstance))
+      }
+    }.eraseToAnyPublisher()
+  }
+
+  func getPokemon(by num: String) -> AnyPublisher<PokemonEntity, Error> {
     return Future<PokemonEntity, Error> { completion in
       if let realm = self.realm {
         let pokemons: Results<PokemonEntity> = {
@@ -73,60 +87,13 @@ extension LocalDataSource: LocalDataSourceProtocol {
     .eraseToAnyPublisher()
   }
 
-  func addPokemonFavorite(from pokemon: PokemonEntity) -> AnyPublisher<Bool, Error> {
-    return Future<Bool, Error> { completion in
-      if let realm = self.realm {
-        do {
-          try realm.write {
-            if realm.isInWriteTransaction {
-              if realm.object(ofType: PokemonEntity.self, forPrimaryKey: pokemon.id) != nil {
-                completion(.failure(DatabaseError.requestFailed))
-              } else {
-                pokemon.favoriteState = true
-                realm.add(pokemon, update: .all)
-                completion(.success(true))
-              }
-            } else {
-              completion(.failure(DatabaseError.requestFailed))
-            }
-          }
-        } catch {
-          completion(.failure(DatabaseError.requestFailed))
-        }
-      } else {
-        completion(.failure(DatabaseError.invalidInstance))
-      }
-    }
-    .eraseToAnyPublisher()
-  }
-
-  func removePokemonFavorite(from pokemon: PokemonEntity) -> AnyPublisher<Bool, Error> {
-
-    return Future<Bool, Error> { completion in
-      if let realm = self.realm {
-        do {
-          try realm.write {
-            let objectToDelete = realm.objects(PokemonEntity.self)
-              .filter("id = \(pokemon.id)")
-            realm.delete(objectToDelete)
-            completion(.success(false))
-          }
-        } catch {
-          completion(.failure(DatabaseError.requestFailed))
-        }
-      } else {
-        completion(.failure(DatabaseError.invalidInstance))
-      }
-    }
-    .eraseToAnyPublisher()
-  }
-
   func getFavoritePokemonList() -> AnyPublisher<[PokemonEntity], Error> {
     return Future<[PokemonEntity], Error> { completion in
       if let realm = self.realm {
         let pokemonEntities = {
           realm.objects(PokemonEntity.self)
             .filter("favoriteState = \(true)")
+            .sorted(byKeyPath: "num", ascending: true)
         }()
         completion(.success(pokemonEntities.toArray(ofType: PokemonEntity.self)))
       } else {
@@ -134,6 +101,25 @@ extension LocalDataSource: LocalDataSourceProtocol {
       }
     }
     .eraseToAnyPublisher()
+  }
+
+  func updateFavoritePokemon(by num: String) -> AnyPublisher<PokemonEntity, Error> {
+    return Future<PokemonEntity, Error> { completion in
+      if let realm = self.realm, let pokemonEntity = {
+        realm.objects(PokemonEntity.self).filter("num = '\(num)'")
+      }().first {
+        do {
+          try realm.write {
+            pokemonEntity.setValue(!pokemonEntity.favoriteState, forKey: "favoriteState")
+          }
+          completion(.success(pokemonEntity))
+        } catch {
+          completion(.failure(DatabaseError.invalidInstance))
+        }
+      } else {
+        completion(.failure(DatabaseError.invalidInstance))
+      }
+    }.eraseToAnyPublisher()
   }
 
 }

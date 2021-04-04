@@ -117,7 +117,7 @@ extension InfoView {
 
       if self.presenter.pokemon.favoriteState {
         Button(action: {
-          self.presenter.unFavorite()
+          self.presenter.updateFavoritePokemon()
         }, label: {
           Text("Remove From Favorite")
         })
@@ -125,7 +125,7 @@ extension InfoView {
         .padding(20)
       } else {
         Button(action: {
-          self.presenter.addFavorite()
+          self.presenter.updateFavoritePokemon()
         }, label: {
           Text("Add to Favorite")
         })
