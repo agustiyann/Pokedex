@@ -8,15 +8,17 @@
 import SwiftUI
 
 enum TabTag {
-  case first, second, third
+  case home, search, favorite, profile
 
   var title: String {
     switch self {
-    case .first:
+    case .home:
       return "Pokedex"
-    case .second:
+    case .search:
+      return "Search"
+    case .favorite:
       return "Favorite"
-    case .third:
+    case .profile:
       return "About"
     }
   }
@@ -27,8 +29,9 @@ struct ContentView: View {
   @EnvironmentObject var homePresenter: HomePresenter
   @EnvironmentObject var favoritePresenter: FavoritePresenter
   @EnvironmentObject var aboutPresenter: AboutPresenter
+  @EnvironmentObject var searchPresenter: SearchPresenter
 
-  @State var selectedTab = TabTag.first
+  @State var selectedTab = TabTag.home
 
   var body: some View {
     NavigationView {
@@ -37,17 +40,22 @@ struct ContentView: View {
           .tabItem {
             Image(systemName: "house.fill")
             Text("Home")
-          }.tag(TabTag.first)
+          }.tag(TabTag.home)
+        SearchView(presenter: searchPresenter)
+          .tabItem {
+            Image(systemName: "magnifyingglass")
+            Text("Search")
+          }.tag(TabTag.search)
         FavoriteView(presenter: favoritePresenter)
           .tabItem {
               Image(systemName: "heart.fill")
               Text("Favorite")
-          }.tag(TabTag.second)
+          }.tag(TabTag.favorite)
         AboutView(presenter: aboutPresenter)
           .tabItem {
               Image(systemName: "person.circle.fill")
               Text("Profile")
-          }.tag(TabTag.third)
+          }.tag(TabTag.profile)
       }
       .navigationBarTitle(selectedTab.title, displayMode: .automatic)
     }

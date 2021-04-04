@@ -16,6 +16,7 @@ protocol LocalDataSourceProtocol: class {
   func getPokemon(by id: String) -> AnyPublisher<PokemonEntity, Error>
   func getFavoritePokemonList() -> AnyPublisher<[PokemonEntity], Error>
   func updateFavoritePokemon(by id: String) -> AnyPublisher<PokemonEntity, Error>
+  func getPokemonsBy(_ name: String) -> AnyPublisher<[PokemonEntity], Error>
 
 }
 
@@ -116,6 +117,21 @@ extension LocalDataSource: LocalDataSourceProtocol {
         } catch {
           completion(.failure(DatabaseError.invalidInstance))
         }
+      } else {
+        completion(.failure(DatabaseError.invalidInstance))
+      }
+    }.eraseToAnyPublisher()
+  }
+
+  func getPokemonsBy(_ name: String) -> AnyPublisher<[PokemonEntity], Error> {
+    return Future<[PokemonEntity], Error> { completion in
+      if let realm = self.realm {
+        let pokemons: Results<PokemonEntity> = {
+          realm.objects(PokemonEntity.self)
+            .filter("name contains[c] %@", name)
+            .sorted(byKeyPath: "name", ascending: true)
+        }()
+        completion(.success(pokemons.toArray(ofType: PokemonEntity.self)))
       } else {
         completion(.failure(DatabaseError.invalidInstance))
       }

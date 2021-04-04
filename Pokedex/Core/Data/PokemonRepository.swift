@@ -14,6 +14,7 @@ protocol PokemonRepositoryProtocol {
   func getPokemon(by id: String) -> AnyPublisher<PokemonModel, Error>
   func getFavoritePokemonList() -> AnyPublisher<[PokemonModel], Error>
   func updateFavoritePokemon(by id: String) -> AnyPublisher<PokemonModel, Error>
+  func searchPokemon(by name: String) -> AnyPublisher<[PokemonModel], Error>
 
 }
 
@@ -70,6 +71,12 @@ extension PokemonRepository: PokemonRepositoryProtocol {
   func updateFavoritePokemon(by id: String) -> AnyPublisher<PokemonModel, Error> {
     return self.locale.updateFavoritePokemon(by: id)
       .map { PokemonMapper.mapPokemonEntityToDomain(input: $0) }
+      .eraseToAnyPublisher()
+  }
+
+  func searchPokemon(by name: String) -> AnyPublisher<[PokemonModel], Error> {
+    return self.locale.getPokemonsBy(name)
+      .map { PokemonMapper.mapPokemonEntitiesToDomains(input: $0) }
       .eraseToAnyPublisher()
   }
 
