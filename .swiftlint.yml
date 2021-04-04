@@ -58,4 +58,11 @@ identifier_name:
     - url
     - GlobalAPIKey
     - hp
+    - red
+function_body_length:
+  - 45
+  - 50
+cyclomatic_complexity:
+  - 20
+  - 25
 reporter: "xcode" # reporter type (xcode, json, csv, checkstyle, codeclimate, junit, html, emoji, sonarqube, markdown, github-actions-logging)

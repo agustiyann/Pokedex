@@ -50,7 +50,6 @@
 		CFAE5608260F2B6200F220FF /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5607260F2B6200F220FF /* HomeInteractor.swift */; };
 		CFAE5610260F2C8500F220FF /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE560F260F2C8500F220FF /* HomePresenter.swift */; };
 		CFAE5615260F2E4600F220FF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5614260F2E4600F220FF /* HomeView.swift */; };
-		CFDDDDE0260FC1E200F709C3 /* PokemonTypeColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFDDDDDF260FC1E200F709C3 /* PokemonTypeColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,7 +115,6 @@
 		CFAE5607260F2B6200F220FF /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		CFAE560F260F2C8500F220FF /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		CFAE5614260F2E4600F220FF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		CFDDDDDF260FC1E200F709C3 /* PokemonTypeColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTypeColor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -431,7 +429,6 @@
 		CFAE55F8260F287E00F220FF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CFDDDDDF260FC1E200F709C3 /* PokemonTypeColor.swift */,
 				CF06C4E826103669007F99C9 /* BarView.swift */,
 				CF561DE7261097AB00607340 /* CustomButtonStyle.swift */,
 				CF0D2ECF261218F0003BEE88 /* ImagePicker.swift */,
@@ -675,7 +672,6 @@
 				CF0D2EC12612047A003BEE88 /* EditAboutView.swift in Sources */,
 				CF38D8B3260F31EF00307225 /* Injection.swift in Sources */,
 				CF38D8ED260F6FA600307225 /* InfoPresenter.swift in Sources */,
-				CFDDDDE0260FC1E200F709C3 /* PokemonTypeColor.swift in Sources */,
 				CF0D2ED8261223A6003BEE88 /* ActivityIndicator.swift in Sources */,
 				CF06C4E926103669007F99C9 /* BarView.swift in Sources */,
 				CFAE5573260F0D7800F220FF /* AppDelegate.swift in Sources */,
