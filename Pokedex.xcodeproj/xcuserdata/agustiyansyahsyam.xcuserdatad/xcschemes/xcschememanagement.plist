@@ -27,8 +27,28 @@
 		</dict>
 		<key>Pokedex.xcscheme_^#shared#^_</key>
 		<dict>
+			<key>isShown</key>
+			<true/>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>CFAE556E260F0D7800F220FF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CFAE5584260F0D7900F220FF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CFAE558F260F0D7900F220FF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
