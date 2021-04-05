@@ -57,13 +57,7 @@ struct ContentView: View {
               Text("Profile")
           }.tag(TabTag.profile)
       }
-      .navigationBarTitle(selectedTab.title, displayMode: .automatic)
+      .navigationBarTitle(selectedTab.title, displayMode: .large)
     }
-  }
-}
-
-struct ContentView_Previews: PreviewProvider {
-  static var previews: some View {
-    ContentView()
   }
 }

@@ -110,12 +110,48 @@ extension InfoView {
         .fixedSize(horizontal: false, vertical: true)
         .padding(.horizontal)
 
-      Text("Stats")
+      Text("Base Stats")
         .font(.title3)
         .bold()
         .padding(.top)
 
       BarChartView(pokemon: self.presenter.pokemon)
+
+      HStack(alignment: .top) {
+        VStack(alignment: .leading) {
+          Text("Breeding")
+            .font(.title3)
+            .bold()
+          Text("Gender")
+            .bold()
+            .foregroundColor(.gray)
+          Text("♂\(self.presenter.pokemon.malePercentage) ♀\(self.presenter.pokemon.femalePercentage)")
+
+          Text("Egg Groups")
+            .bold()
+            .foregroundColor(.gray)
+            .padding(.top, 1)
+          Text(self.presenter.pokemon.eggGroups)
+
+          Text("Egg Cycle")
+            .bold()
+            .foregroundColor(.gray)
+            .padding(.top, 1)
+          Text(self.presenter.pokemon.cycles)
+        }
+        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+        VStack(alignment: .leading) {
+          Text("Weaknesses")
+            .font(.title3)
+            .bold()
+          ForEach(self.presenter.pokemon.weaknesses, id: \.self) { type in
+            Text(type)
+              .foregroundColor(Color.backgroundType(type: type))
+          }
+        }
+        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+      }
+      .padding()
 
       if self.presenter.pokemon.favoriteState {
         Button(action: {

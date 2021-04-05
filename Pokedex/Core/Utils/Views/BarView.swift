@@ -11,9 +11,9 @@ struct BarView: View {
   var value: Int = 100
   var title: String = "HP"
   var color: Color = .blue
+  var maxValue: Int = 100
 
   var body: some View {
-
     HStack(alignment: .center) {
       Text(title)
         .foregroundColor(.gray)
@@ -22,33 +22,32 @@ struct BarView: View {
         Text("\(value)")
           .frame(width: 40)
 
-        ZStack(alignment: .leading) {
-          Capsule()
-            .frame(width: 180, height: 20).animation(.default)
-            .foregroundColor(Color(.systemGray5))
-
-          Capsule()
-            .frame(width: value > 250 ? CGFloat(200) : CGFloat(value), height: 20).animation(.default)
-            .foregroundColor(color)
-        }
+        ProgressView(value: Float(value), total: Float(maxValue))
+          .accentColor(color)
+          .scaleEffect(x: 1, y: 4, anchor: .center)
       }
     }
+    .padding(.horizontal)
   }
 }
 
 struct BarChartView: View {
   let pokemon: PokemonModel
   var body: some View {
-    VStack {
-      BarView(value: pokemon.attack, title: "ATK", color: .red)
-      BarView(value: pokemon.defense, title: "DEF", color: .blue)
+    VStack(alignment: .leading) {
+      BarView(value: pokemon.hp, title: "HP\t\t", color: .green)
+      BarView(value: pokemon.attack, title: "ATK\t", color: .red)
+      BarView(value: pokemon.defense, title: "DEF\t", color: .blue)
+      BarView(value: pokemon.specialAttack, title: "S.ATK\t", color: .red)
+      BarView(value: pokemon.specialDefense, title: "S.DEF\t", color: .blue)
+      BarView(value: pokemon.speed, title: "SPD\t", color: .orange)
+      BarView(value: pokemon.total, title: "TOT\t", color: .blue, maxValue: 600)
     }
   }
 }
 
 struct BarView_Previews: PreviewProvider {
   static var previews: some View {
-    BarView()
     BarChartView(pokemon: samplePokemon)
   }
 }
