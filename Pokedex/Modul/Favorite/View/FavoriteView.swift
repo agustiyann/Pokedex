@@ -21,9 +21,10 @@ struct FavoriteView: View {
       } else {
         if presenter.pokemonList.isEmpty {
           VStack {
-            Spacer()
-            Text("Favorite List is Empty")
-            Spacer()
+            CustomEmptyView(
+              image: "pokeball",
+              title: "No favorite Pokemon!"
+            ).offset(y: 50)
           }
         } else {
           ScrollView(.vertical, showsIndicators: false) {
