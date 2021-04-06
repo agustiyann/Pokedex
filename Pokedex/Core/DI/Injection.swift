@@ -28,6 +28,18 @@ final class Injection: NSObject {
     return Interactor(repository: repository) as! U
   }
 
+  func provideInfoPokemon<U: UseCase>() -> U where U.Request == String, U.Response == PokemonDomainModel {
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let locale = GetPokemonsLocaleDataSource(realm: appDelegate.realm)
+    let mapper = PokemonTransformer()
+
+    let repository = GetPokemonRepository(
+      localeDataSource: locale,
+      mapper: mapper)
+
+    return Interactor(repository: repository) as! U
+  }
+
   func provideUpdateFavorite<U: UseCase>() -> U where U.Request == String, U.Response == PokemonDomainModel {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let locale = GetFavoritePokemonLocaleDataSource(realm: appDelegate.realm)

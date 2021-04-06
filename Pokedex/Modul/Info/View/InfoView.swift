@@ -12,12 +12,10 @@ import Pokemon
 
 struct InfoView: View {
 
-  @ObservedObject var presenter: GetListPresenter<
-    String,
-    PokemonDomainModel,
-    Interactor<String,
-               [PokemonDomainModel],
-               GetPokemonsRepository<GetPokemonsLocaleDataSource, GetPokemonsRemoteDataSource, PokemonsTransformer<PokemonTransformer>>>>
+  @ObservedObject var presenter: PokemonPresenter<
+    Interactor<String, PokemonDomainModel, GetPokemonRepository<GetPokemonsLocaleDataSource, PokemonTransformer>>,
+    Interactor<String, PokemonDomainModel, UpdateFavoritePokemonRepository<GetFavoritePokemonLocaleDataSource, PokemonTransformer>>
+  >
 
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
@@ -45,6 +43,7 @@ struct InfoView: View {
     }
     .onAppear(perform: {
 //      self.presenter.getPokemon()
+      self.presenter.getPokemon(request: pokemon.id)
     })
     .navigationBarBackButtonHidden(true)
     .navigationBarItems(
@@ -62,7 +61,7 @@ struct InfoView: View {
 extension InfoView {
 
   var imagePokemon: some View {
-    WebImage(url: URL(string: pokemon.imageurl))
+    WebImage(url: URL(string: self.presenter.item?.imageurl ?? ""))
       .resizable()
       .indicator(.activity)
       .transition(.fade(duration: 0.5))
@@ -75,13 +74,13 @@ extension InfoView {
 
   var content: some View {
     VStack(alignment: .center, spacing: 10) {
-      Text(pokemon.name)
+      Text(self.presenter.item?.name ?? "")
         .font(.title)
         .bold()
         .padding(.top, 40)
 
       HStack(alignment: .center, spacing: 25) {
-        ForEach(pokemon.type, id: \.self) { type in
+        ForEach(self.presenter.item?.type ?? [String](), id: \.self) { type in
           Text(type)
             .bold()
             .foregroundColor(Color.white)
@@ -94,7 +93,7 @@ extension InfoView {
       HStack(alignment: .center) {
         Spacer()
         VStack(alignment: .center, spacing: 10) {
-          Text(pokemon.height)
+          Text(self.presenter.item?.height ?? "")
             .font(.title3)
             .bold()
           Text("Height")
@@ -102,7 +101,7 @@ extension InfoView {
         }
         Spacer()
         VStack(alignment: .center, spacing: 10) {
-          Text(pokemon.weight)
+          Text(self.presenter.item?.weight ?? "")
             .font(.title3)
             .bold()
           Text("Weight")
@@ -115,7 +114,7 @@ extension InfoView {
       Text("About")
         .font(.title3)
         .bold()
-      Text(pokemon.description)
+      Text(self.presenter.item?.description ?? "")
         .fixedSize(horizontal: false, vertical: true)
         .padding(.horizontal)
 
@@ -134,26 +133,26 @@ extension InfoView {
           Text("Gender")
             .bold()
             .foregroundColor(.gray)
-          Text("♂\(pokemon.malePercentage) ♀\(pokemon.femalePercentage)")
+          Text("♂\(self.presenter.item?.malePercentage ?? "") ♀\(self.presenter.item?.femalePercentage ?? "")")
 
           Text("Egg Groups")
             .bold()
             .foregroundColor(.gray)
             .padding(.top, 1)
-          Text(pokemon.eggGroups)
+          Text(self.presenter.item?.eggGroups ?? "")
 
           Text("Egg Cycle")
             .bold()
             .foregroundColor(.gray)
             .padding(.top, 1)
-          Text(pokemon.cycles)
+          Text(self.presenter.item?.cycles ?? "")
         }
         .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
         VStack(alignment: .leading) {
           Text("Weaknesses")
             .font(.title3)
             .bold()
-          ForEach(pokemon.weaknesses, id: \.self) { type in
+          ForEach(self.presenter.item?.weaknesses ?? [String](), id: \.self) { type in
             Text(type)
               .foregroundColor(Color.backgroundType(type: type))
           }

@@ -13,7 +13,7 @@ import Foundation
 
 public struct GetPokemonsLocaleDataSource: LocaleDataSource {
 
-  public typealias Request = Any
+  public typealias Request = String
   public typealias Response = PokemonModuleEntity
 
   private let _realm: Realm
@@ -22,7 +22,7 @@ public struct GetPokemonsLocaleDataSource: LocaleDataSource {
     _realm = realm
   }
 
-  public func list(request: Any?) -> AnyPublisher<[PokemonModuleEntity], Error> {
+  public func list(request: String?) -> AnyPublisher<[PokemonModuleEntity], Error> {
     return Future<[PokemonModuleEntity], Error> { completion in
       let pokemons: Results<PokemonModuleEntity> = {
         _realm.objects(PokemonModuleEntity.self)
@@ -48,7 +48,18 @@ public struct GetPokemonsLocaleDataSource: LocaleDataSource {
   }
 
   public func get(id: String) -> AnyPublisher<PokemonModuleEntity, Error> {
-    fatalError()
+    return Future<PokemonModuleEntity, Error> { completion in
+      let pokemons: Results<PokemonModuleEntity> = {
+        _realm.objects(PokemonModuleEntity.self)
+          .filter("id = '\(id)'")
+      }()
+
+      guard let pokemon = pokemons.first else {
+        completion(.failure(DatabaseError.requestFailed))
+        return
+      }
+      completion(.success(pokemon))
+    }.eraseToAnyPublisher()
   }
 
   public func update(id: String, entity: PokemonModuleEntity) -> AnyPublisher<Bool, Error> {
