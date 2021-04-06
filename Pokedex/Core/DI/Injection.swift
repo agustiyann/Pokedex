@@ -13,15 +13,28 @@ import Pokemon
 
 final class Injection: NSObject {
 
-  func providePokemon<U: UseCase>() -> U where U.Request == Any, U.Response == [PokemonDomainModel] {
+  func providePokemon<U: UseCase>() -> U where U.Request == String, U.Response == [PokemonDomainModel] {
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let locale = GetPokemonsLocaleDataSource(realm: appDelegate.realm)
     let remote = GetPokemonsRemoteDataSource(endpoint: Endpoints.Gets.list.url)
-    let mapper = PokemonTransformer()
+    let pokemonMapper = PokemonTransformer()
+    let mapper = PokemonsTransformer(pokemonMapper: pokemonMapper)
     let repository = GetPokemonsRepository(
       localeDataSource: locale,
       remoteDataSource: remote,
+      mapper: mapper)
+
+    return Interactor(repository: repository) as! U
+  }
+
+  func provideUpdateFavorite<U: UseCase>() -> U where U.Request == String, U.Response == PokemonDomainModel {
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let locale = GetFavoritePokemonLocaleDataSource(realm: appDelegate.realm)
+    let mapper = PokemonTransformer()
+
+    let repository = UpdateFavoritePokemonRepository(
+      localDataSource: locale,
       mapper: mapper)
 
     return Interactor(repository: repository) as! U

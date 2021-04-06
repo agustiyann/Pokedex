@@ -13,11 +13,11 @@ import Pokemon
 struct InfoView: View {
 
   @ObservedObject var presenter: GetListPresenter<
-    Any,
+    String,
     PokemonDomainModel,
-    Interactor<Any,
+    Interactor<String,
                [PokemonDomainModel],
-               GetPokemonsRepository<GetPokemonsLocaleDataSource, GetPokemonsRemoteDataSource, PokemonTransformer>>>
+               GetPokemonsRepository<GetPokemonsLocaleDataSource, GetPokemonsRemoteDataSource, PokemonsTransformer<PokemonTransformer>>>>
 
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 

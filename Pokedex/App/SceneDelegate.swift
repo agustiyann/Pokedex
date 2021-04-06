@@ -20,12 +20,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     options connectionOptions: UIScene.ConnectionOptions
   ) {
     let pokemonUseCase: Interactor<
-      Any,
+      String,
       [PokemonDomainModel],
       GetPokemonsRepository<
         GetPokemonsLocaleDataSource,
         GetPokemonsRemoteDataSource,
-        PokemonTransformer>
+        PokemonsTransformer<PokemonTransformer>>
     > = Injection.init().providePokemon()
 
     let favoriteUseCase = Injection.init().provideFavorite()

@@ -29,12 +29,12 @@ enum TabTag {
 struct ContentView: View {
 
   @EnvironmentObject var homePresenter: GetListPresenter<
-    Any,
+    String,
     PokemonDomainModel,
     Interactor<
-      Any,
+      String,
       [PokemonDomainModel],
-      GetPokemonsRepository<GetPokemonsLocaleDataSource, GetPokemonsRemoteDataSource, PokemonTransformer>
+      GetPokemonsRepository<GetPokemonsLocaleDataSource, GetPokemonsRemoteDataSource, PokemonsTransformer<PokemonTransformer>>
     >
   >
   @EnvironmentObject var favoritePresenter: FavoritePresenter

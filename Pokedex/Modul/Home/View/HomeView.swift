@@ -12,11 +12,11 @@ import Pokemon
 struct HomeView: View {
 
   @ObservedObject var presenter: GetListPresenter<
-    Any,
+    String,
     PokemonDomainModel,
-    Interactor<Any,
+    Interactor<String,
                [PokemonDomainModel],
-               GetPokemonsRepository<GetPokemonsLocaleDataSource, GetPokemonsRemoteDataSource, PokemonTransformer>>>
+               GetPokemonsRepository<GetPokemonsLocaleDataSource, GetPokemonsRemoteDataSource, PokemonsTransformer<PokemonTransformer>>>>
 
   @AppStorage("grid") var gridState = false
 

@@ -17,11 +17,12 @@ where
 
   CategoryLocaleDataSource.Response == PokemonModuleEntity,
   RemoteDataSource.Response == [PokemonResponse],
+  Transformer.Request == String,
   Transformer.Response == [PokemonResponse],
   Transformer.Entity == [PokemonModuleEntity],
   Transformer.Domain == [PokemonDomainModel] {
   
-  public typealias Request = Any
+  public typealias Request = String
   public typealias Response = [PokemonDomainModel]
 
   private let _localeDataSource: CategoryLocaleDataSource
@@ -38,12 +39,12 @@ where
     _mapper = mapper
   }
 
-  public func execute(request: Any?) -> AnyPublisher<[PokemonDomainModel], Error> {
+  public func execute(request: String?) -> AnyPublisher<[PokemonDomainModel], Error> {
     return _localeDataSource.list(request: nil)
       .flatMap { result -> AnyPublisher<[PokemonDomainModel], Error> in
         if result.isEmpty {
           return _remoteDataSource.execute(request: nil)
-            .map { _mapper.transformResponseToEntity(response: $0) }
+            .map { _mapper.transformResponseToEntity(request: request, response: $0) }
             .catch { _ in _localeDataSource.list(request: nil) }
             .flatMap { _localeDataSource.add(entities: $0) }
             .filter { $0 }
