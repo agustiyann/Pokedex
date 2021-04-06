@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PokemonResponse: Decodable {
+public struct PokemonResponse: Decodable {
 
   private enum CodingKeys: String, CodingKey {
     case id, name, imageurl, height, weight, hp, attack, defense, speed, total, cycles, weaknesses

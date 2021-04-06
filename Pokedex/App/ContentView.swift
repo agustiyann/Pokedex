@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Core
+import Pokemon
 
 enum TabTag {
   case home, search, favorite, profile
@@ -26,7 +28,15 @@ enum TabTag {
 
 struct ContentView: View {
 
-  @EnvironmentObject var homePresenter: HomePresenter
+  @EnvironmentObject var homePresenter: GetListPresenter<
+    Any,
+    PokemonDomainModel,
+    Interactor<
+      Any,
+      [PokemonDomainModel],
+      GetPokemonsRepository<GetPokemonsLocaleDataSource, GetPokemonsRemoteDataSource, PokemonTransformer>
+    >
+  >
   @EnvironmentObject var favoritePresenter: FavoritePresenter
   @EnvironmentObject var aboutPresenter: AboutPresenter
   @EnvironmentObject var searchPresenter: SearchPresenter

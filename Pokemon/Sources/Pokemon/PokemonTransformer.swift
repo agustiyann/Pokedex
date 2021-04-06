@@ -8,7 +8,7 @@
 import Foundation
 import Core
 
-public struct CategoryTransformer: Mapper {
+public struct PokemonTransformer: Mapper {
   public typealias Response = [PokemonResponse]
   public typealias Entity = [PokemonModuleEntity]
   public typealias Domain = [PokemonDomainModel]
@@ -17,7 +17,7 @@ public struct CategoryTransformer: Mapper {
 
   public func transformResponseToEntity(response: [PokemonResponse]) -> [PokemonModuleEntity] {
     return response.map { result in
-      let newPokemon = PokemonEntity()
+      let newPokemon = PokemonModuleEntity()
       newPokemon.id = result.id ?? "#000"
       newPokemon.name = result.name ?? "Unknow"
       newPokemon.desc = result.description ?? "Unknow"

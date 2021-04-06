@@ -6,10 +6,19 @@
 //
 
 import SwiftUI
+import Core
+import Pokemon
 
 struct HomeView: View {
 
-  @ObservedObject var presenter: HomePresenter
+  @ObservedObject var presenter: GetListPresenter<
+    Any,
+    PokemonDomainModel,
+    Interactor<Any,
+               [PokemonDomainModel],
+               GetPokemonsRepository<GetPokemonsLocaleDataSource, GetPokemonsRemoteDataSource, PokemonTransformer>
+    >
+  >
   @AppStorage("grid") var gridState = false
   private let gridItems = [
     GridItem(.flexible()),
@@ -19,7 +28,7 @@ struct HomeView: View {
   var body: some View {
 
     ZStack {
-      if presenter.loadingState {
+      if presenter.isLoading {
         VStack {
           Text("Loading...")
           ActivityIndicator()
@@ -29,22 +38,27 @@ struct HomeView: View {
           ScrollView(.vertical, showsIndicators: false) {
             if gridState {
               LazyVGrid(columns: gridItems) {
-                ForEach(self.presenter.pokemonList, id: \.id) { pokemon in
+                ForEach(self.presenter.list, id: \.id) { pokemon in
+//                  ZStack {
+//                    self.presenter.linkBuilder(for: pokemon) {
+//                      PokemonGridRowView(pokemon: pokemon)
+//                    }.buttonStyle(PlainButtonStyle())
                   ZStack {
-                    self.presenter.linkBuilder(for: pokemon) {
-                      PokemonGridRowView(pokemon: pokemon)
-                    }.buttonStyle(PlainButtonStyle())
-                  }
+                    PokemonGridRowView(pokemon: pokemon)
+                  }.buttonStyle(PlainButtonStyle())
                 }
               }.padding()
             } else {
               LazyVStack {
-                ForEach(self.presenter.pokemonList, id: \.id) { pokemon in
+                ForEach(self.presenter.list, id: \.id) { pokemon in
+//                  ZStack {
+//                    self.presenter.linkBuilder(for: pokemon) {
+//                      PokemonRowView(pokemon: pokemon)
+//                    }.buttonStyle(PlainButtonStyle())
+//                  }.padding(8)
                   ZStack {
-                    self.presenter.linkBuilder(for: pokemon) {
-                      PokemonRowView(pokemon: pokemon)
-                    }.buttonStyle(PlainButtonStyle())
-                  }.padding(8)
+                    PokemonRowView(pokemon: pokemon)
+                  }.buttonStyle(PlainButtonStyle())
                 }
               }
             }
@@ -58,8 +72,8 @@ struct HomeView: View {
       }
     }
     .onAppear {
-      if self.presenter.pokemonList.isEmpty {
-        self.presenter.getPokemonList()
+      if self.presenter.list.isEmpty {
+        self.presenter.getList(request: nil)
       }
     }
   }

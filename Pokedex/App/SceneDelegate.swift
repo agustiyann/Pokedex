@@ -7,6 +7,8 @@
 
 import UIKit
 import SwiftUI
+import Core
+import Pokemon
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -17,12 +19,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     willConnectTo session: UISceneSession,
     options connectionOptions: UIScene.ConnectionOptions
   ) {
+    let pokemonUseCase: Interactor<
+      Any,
+      [PokemonDomainModel],
+      GetPokemonsRepository<
+        GetPokemonsLocaleDataSource,
+        GetPokemonsRemoteDataSource,
+        PokemonTransformer>
+    > = Injection.init().providePokemon()
 
-    let homeUseCase = Injection.init().provideHome()
     let favoriteUseCase = Injection.init().provideFavorite()
     let searchUseCase = Injection.init().provideSearch()
 
-    let homePresenter = HomePresenter(homeUseCase: homeUseCase)
+    let homePresenter = GetListPresenter(useCase: pokemonUseCase)
     let favoritePresenter = FavoritePresenter(favoriteUseCase: favoriteUseCase)
     let aboutPresenter = AboutPresenter()
     let searchPresenter = SearchPresenter(searchUseCase: searchUseCase)

@@ -6,8 +6,8 @@
 //
 
 import Foundation
-import Core
 import Combine
+import Core
 import RealmSwift
 import Foundation
 
@@ -23,10 +23,10 @@ public struct GetPokemonsLocaleDataSource: LocaleDataSource {
   }
 
   public func list(request: Any?) -> AnyPublisher<[PokemonModuleEntity], Error> {
-    return Future<[CategoryModuleEntity], Error> { completion in
-      let pokemons: Results<CategoryModuleEntity> = {
-        _realm.objects(CategoryModuleEntity.self)
-          .sorted(byKeyPath: "name", ascending: true)
+    return Future<[PokemonModuleEntity], Error> { completion in
+      let pokemons: Results<PokemonModuleEntity> = {
+        _realm.objects(PokemonModuleEntity.self)
+          .sorted(byKeyPath: "id", ascending: true)
       }()
       completion(.success(pokemons.toArray(ofType: PokemonModuleEntity.self)))
     }.eraseToAnyPublisher()

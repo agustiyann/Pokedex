@@ -31,7 +31,7 @@ public class PokemonModuleEntity: Object {
   let weaknesses = List<String>()
   @objc dynamic var favoriteState: Bool = false
 
-  override class func primaryKey() -> String? {
+  public override class func primaryKey() -> String? {
     return "id"
   }
 }

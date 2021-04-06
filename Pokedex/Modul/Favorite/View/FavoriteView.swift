@@ -32,7 +32,7 @@ struct FavoriteView: View {
               ForEach(self.presenter.pokemonList, id: \.id) { pokemon in
                 ZStack {
                   self.presenter.linkBuilder(for: pokemon) {
-                    PokemonRowView(pokemon: pokemon)
+                    PokemonFavoriteRow(pokemon: pokemon)
                   }.buttonStyle(PlainButtonStyle())
                 }.padding(8)
               }

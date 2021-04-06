@@ -7,8 +7,25 @@
 
 import Foundation
 import RealmSwift
+import UIKit
+import Core
+import Pokemon
 
 final class Injection: NSObject {
+
+  func providePokemon<U: UseCase>() -> U where U.Request == Any, U.Response == [PokemonDomainModel] {
+
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let locale = GetPokemonsLocaleDataSource(realm: appDelegate.realm)
+    let remote = GetPokemonsRemoteDataSource(endpoint: Endpoints.Gets.list.url)
+    let mapper = PokemonTransformer()
+    let repository = GetPokemonsRepository(
+      localeDataSource: locale,
+      remoteDataSource: remote,
+      mapper: mapper)
+
+    return Interactor(repository: repository) as! U
+  }
 
   private func provideRepository() -> PokemonRepositoryProtocol {
     let realm = try? Realm()

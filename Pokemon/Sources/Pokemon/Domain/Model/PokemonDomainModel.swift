@@ -7,28 +7,28 @@
 
 import Foundation
 
-public struct CategoryDomainModel: Equatable, Identifiable {
+public struct PokemonDomainModel: Equatable, Identifiable {
 
-  let id: String
-  let name: String
-  let description: String
-  let imageurl: String
-  let height: String
-  let weight: String
-  let hp: Int
-  let attack: Int
-  let defense: Int
-  let specialAttack: Int
-  let specialDefense: Int
-  let speed: Int
-  let total: Int
-  let malePercentage: String
-  let femalePercentage: String
-  let cycles: String
-  let eggGroups: String
-  let type: [String]
-  let weaknesses: [String]
-  let favoriteState: Bool
+  public let id: String
+  public let name: String
+  public let description: String
+  public let imageurl: String
+  public let height: String
+  public let weight: String
+  public let hp: Int
+  public let attack: Int
+  public let defense: Int
+  public let specialAttack: Int
+  public let specialDefense: Int
+  public let speed: Int
+  public let total: Int
+  public let malePercentage: String
+  public let femalePercentage: String
+  public let cycles: String
+  public let eggGroups: String
+  public let type: [String]
+  public let weaknesses: [String]
+  public let favoriteState: Bool
 
   public init(
     id: String,

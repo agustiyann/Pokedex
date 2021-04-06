@@ -7,10 +7,12 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import Core
+import Pokemon
 
 struct PokemonRowView: View {
 
-  var pokemon: PokemonModel
+  var pokemon: PokemonDomainModel
 
   var body: some View {
     VStack {
@@ -55,11 +57,4 @@ extension PokemonRowView {
     )
   }
 
-}
-
-struct PokemonRowView_Previews: PreviewProvider {
-  static var previews: some View {
-    let pokemon = samplePokemon
-    PokemonRowView(pokemon: pokemon)
-  }
 }

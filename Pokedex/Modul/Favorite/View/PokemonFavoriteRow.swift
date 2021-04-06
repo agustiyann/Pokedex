@@ -1,34 +1,33 @@
 //
-//  PokemonGridRowView.swift
+//  PokemonFavoriteRow.swift
 //  Pokedex
 //
-//  Created by Agus Tiyansyah Syam on 04/04/21.
+//  Created by Agus Tiyansyah Syam on 06/04/21.
 //
 
 import SwiftUI
+
 import SDWebImageSwiftUI
 import Core
 import Pokemon
 
-struct PokemonGridRowView: View {
+struct PokemonFavoriteRow: View {
 
-  var pokemon: PokemonDomainModel
+  var pokemon: PokemonModel
 
   var body: some View {
-    ZStack {
-      VStack {
-        imagePokemon
-        content
-      }
-      .frame(maxWidth: .infinity, maxHeight: .infinity)
-      .background(Color.backgroundType(type: self.pokemon.type[0]))
-      .cornerRadius(12)
-      .padding(4)
+    VStack {
+      imagePokemon
+      content
     }
+    .frame(width: UIScreen.main.bounds.width - 32, height: 250)
+    .background(Color.backgroundType(type: self.pokemon.type[0]))
+    .cornerRadius(30)
   }
+
 }
 
-extension PokemonGridRowView {
+extension PokemonFavoriteRow {
 
   var imagePokemon: some View {
     WebImage(url: URL(string: self.pokemon.imageurl))
@@ -36,7 +35,7 @@ extension PokemonGridRowView {
       .indicator(.activity)
       .transition(.fade(duration: 0.5))
       .scaledToFit()
-      .frame(width: 100)
+      .frame(width: 200)
       .cornerRadius(30)
       .shadow(color: .black, radius: 5, x: 0, y: 5)
       .padding(.top)
@@ -45,10 +44,9 @@ extension PokemonGridRowView {
   var content: some View {
     VStack(alignment: .leading, spacing: 10) {
       Text(pokemon.name)
-        .font(.title2)
+        .font(.title)
         .foregroundColor(.white)
         .bold()
-        .lineLimit(1)
         .shadow(color: .black, radius: 5, x: 0, y: 0)
     }.padding(
       EdgeInsets(
@@ -60,4 +58,10 @@ extension PokemonGridRowView {
     )
   }
 
+}
+
+struct PokemonFavoriteRow_Previews: PreviewProvider {
+    static var previews: some View {
+        PokemonFavoriteRow(pokemon: samplePokemon)
+    }
 }

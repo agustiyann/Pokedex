@@ -27,7 +27,7 @@ public struct GetPokemonsRemoteDataSource : DataSource {
       if let url = URL(string: _endpoint) {
         AF.request(url)
           .validate()
-          .responseDecodable(of: PokemonResponse.self) { response in
+          .responseDecodable(of: [PokemonResponse].self) { response in
             switch response.result {
             case .success(let value):
               completion(.success(value))

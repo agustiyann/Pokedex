@@ -6,23 +6,23 @@
 //
 
 import Foundation
-import Core
 import Combine
+import Core
 
-public struct GetCategoriesRepository<
+public struct GetPokemonsRepository<
   CategoryLocaleDataSource: LocaleDataSource,
   RemoteDataSource: DataSource,
   Transformer: Mapper>: Repository
 where
 
-  CategoryLocaleDataSource.Response == CategoryModuleEntity,
-  RemoteDataSource.Response == [CategoryResponse],
-  Transformer.Response == [CategoryResponse],
-  Transformer.Entity == [CategoryModuleEntity],
-  Transformer.Domain == [CategoryDomainModel] {
+  CategoryLocaleDataSource.Response == PokemonModuleEntity,
+  RemoteDataSource.Response == [PokemonResponse],
+  Transformer.Response == [PokemonResponse],
+  Transformer.Entity == [PokemonModuleEntity],
+  Transformer.Domain == [PokemonDomainModel] {
   
   public typealias Request = Any
-  public typealias Response = [CategoryDomainModel]
+  public typealias Response = [PokemonDomainModel]
 
   private let _localeDataSource: CategoryLocaleDataSource
   private let _remoteDataSource: RemoteDataSource
@@ -38,9 +38,9 @@ where
     _mapper = mapper
   }
 
-  public func execute(request: Any?) -> AnyPublisher<[CategoryDomainModel], Error> {
+  public func execute(request: Any?) -> AnyPublisher<[PokemonDomainModel], Error> {
     return _localeDataSource.list(request: nil)
-      .flatMap { result -> AnyPublisher<[CategoryDomainModel], Error> in
+      .flatMap { result -> AnyPublisher<[PokemonDomainModel], Error> in
         if result.isEmpty {
           return _remoteDataSource.execute(request: nil)
             .map { _mapper.transformResponseToEntity(response: $0) }
