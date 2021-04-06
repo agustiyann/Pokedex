@@ -14,9 +14,13 @@ struct HomeView: View {
   @ObservedObject var presenter: GetListPresenter<
     String,
     PokemonDomainModel,
-    Interactor<String,
-               [PokemonDomainModel],
-               GetPokemonsRepository<GetPokemonsLocaleDataSource, GetPokemonsRemoteDataSource, PokemonsTransformer<PokemonTransformer>>>>
+    Interactor<
+      String,
+      [PokemonDomainModel],
+      GetPokemonsRepository<
+        GetPokemonsLocaleDataSource,
+        GetPokemonsRemoteDataSource,
+        PokemonsTransformer<PokemonTransformer>>>>
 
   @AppStorage("grid") var gridState = false
 
@@ -39,10 +43,6 @@ struct HomeView: View {
             if gridState {
               LazyVGrid(columns: gridItems) {
                 ForEach(self.presenter.list, id: \.id) { pokemon in
-//                  ZStack {
-//                    self.presenter.linkBuilder(for: pokemon) {
-//                      PokemonGridRowView(pokemon: pokemon)
-//                    }.buttonStyle(PlainButtonStyle())
                   ZStack {
                     linkBuilder(for: pokemon) {
                       PokemonGridRowView(pokemon: pokemon)
@@ -53,11 +53,6 @@ struct HomeView: View {
             } else {
               LazyVStack {
                 ForEach(self.presenter.list, id: \.id) { pokemon in
-//                  ZStack {
-//                    self.presenter.linkBuilder(for: pokemon) {
-//                      PokemonRowView(pokemon: pokemon)
-//                    }.buttonStyle(PlainButtonStyle())
-//                  }.padding(8)
                   ZStack {
                     linkBuilder(for: pokemon) {
                       PokemonRowView(pokemon: pokemon)

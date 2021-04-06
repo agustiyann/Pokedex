@@ -74,3 +74,26 @@ public struct PokemonDomainModel: Equatable, Identifiable {
     self.favoriteState = favoriteState
   }
 }
+
+public let samplePokemon = PokemonDomainModel(
+  id: "#001",
+  name: "Bulbasaur",
+  description: "Bulbasaur can be seen napping in bright sunlight.",
+  imageurl: "https://pokeres.bastionbot.org/images/pokemon/1.png",
+  height: "0.71 m",
+  weight: "6.9 kg",
+  hp: 20,
+  attack: 30,
+  defense: 20,
+  specialAttack: 30,
+  specialDefense: 30,
+  speed: 30,
+  total: 160,
+  malePercentage: "87.5",
+  femalePercentage: "66.8",
+  cycles: "20",
+  eggGroups: "Grass",
+  type: ["Grass", "Poison"],
+  weaknesses: ["Fire", "Ice"],
+  favoriteState: false
+)

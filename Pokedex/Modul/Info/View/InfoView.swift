@@ -13,9 +13,14 @@ import Pokemon
 struct InfoView: View {
 
   @ObservedObject var presenter: PokemonPresenter<
-    Interactor<String, PokemonDomainModel, GetPokemonRepository<GetPokemonsLocaleDataSource, PokemonTransformer>>,
-    Interactor<String, PokemonDomainModel, UpdateFavoritePokemonRepository<GetFavoritePokemonLocaleDataSource, PokemonTransformer>>
-  >
+    Interactor<
+      String,
+      PokemonDomainModel,
+      GetPokemonRepository<GetPokemonsLocaleDataSource, PokemonTransformer>>,
+    Interactor<
+      String,
+      PokemonDomainModel,
+      UpdateFavoritePokemonRepository<GetFavoritePokemonLocaleDataSource, PokemonTransformer>>>
 
   @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
@@ -42,7 +47,6 @@ struct InfoView: View {
       }
     }
     .onAppear(perform: {
-//      self.presenter.getPokemon()
       self.presenter.getPokemon(request: pokemon.id)
     })
     .navigationBarBackButtonHidden(true)

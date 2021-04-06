@@ -6,20 +6,30 @@
 //
 
 import SwiftUI
+import Core
+import Pokemon
 
 struct FavoriteView: View {
 
-  @ObservedObject var presenter: FavoritePresenter
+  @ObservedObject var presenter: GetListPresenter<
+    String,
+    PokemonDomainModel,
+    Interactor<
+      String,
+      [PokemonDomainModel],
+      GetFavoritePokemonsRepository<
+        GetFavoritePokemonLocaleDataSource,
+        PokemonsTransformer<PokemonTransformer>>>>
 
   var body: some View {
     ZStack {
-      if presenter.loadingState {
+      if presenter.isLoading {
         VStack {
           Text("Loading...")
           ActivityIndicator()
         }
       } else {
-        if presenter.pokemonList.isEmpty {
+        if presenter.list.isEmpty {
           VStack {
             CustomEmptyView(
               image: "pokeball",
@@ -29,12 +39,12 @@ struct FavoriteView: View {
         } else {
           ScrollView(.vertical, showsIndicators: false) {
             LazyVStack {
-              ForEach(self.presenter.pokemonList, id: \.id) { pokemon in
-//                ZStack {
-//                  self.presenter.linkBuilder(for: pokemon) {
-//                    PokemonFavoriteRow(pokemon: pokemon)
-//                  }.buttonStyle(PlainButtonStyle())
-//                }.padding(8)
+              ForEach(self.presenter.list, id: \.id) { pokemon in
+                ZStack {
+                  self.linkBuilder(for: pokemon) {
+                    PokemonFavoriteRow(pokemon: pokemon)
+                  }.buttonStyle(PlainButtonStyle())
+                }.padding(8)
               }
             }
           }
@@ -42,7 +52,16 @@ struct FavoriteView: View {
       }
     }
     .onAppear {
-      self.presenter.getFavoriteList()
+      self.presenter.getList(request: nil)
     }
+  }
+
+  func linkBuilder<Content: View>(
+      for pokemon: PokemonDomainModel,
+      @ViewBuilder content: () -> Content
+  ) -> some View {
+      NavigationLink(
+          destination: HomeRouter().makeInfoView(for: pokemon)
+      ) { content() }
   }
 }

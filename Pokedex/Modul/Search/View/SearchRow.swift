@@ -7,6 +7,8 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import Core
+import Pokemon
 
 struct SearchRow: View {
 
@@ -63,8 +65,8 @@ extension SearchRow {
 
 }
 
-struct SearchRow_Previews: PreviewProvider {
-  static var previews: some View {
-    SearchRow(pokemon: samplePokemon)
-  }
-}
+//struct SearchRow_Previews: PreviewProvider {
+//  static var previews: some View {
+//    SearchRow(pokemon: samplePokemon)
+//  }
+//}

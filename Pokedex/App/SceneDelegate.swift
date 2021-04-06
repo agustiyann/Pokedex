@@ -19,6 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     willConnectTo session: UISceneSession,
     options connectionOptions: UIScene.ConnectionOptions
   ) {
+    let injection = Injection()
+
     let pokemonUseCase: Interactor<
       String,
       [PokemonDomainModel],
@@ -26,13 +28,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         GetPokemonsLocaleDataSource,
         GetPokemonsRemoteDataSource,
         PokemonsTransformer<PokemonTransformer>>
-    > = Injection.init().providePokemon()
+    > = injection.providePokemon()
 
-    let favoriteUseCase = Injection.init().provideFavorite()
+    let favoriteUseCase: Interactor<
+      String,
+      [PokemonDomainModel],
+      GetFavoritePokemonsRepository<
+        GetFavoritePokemonLocaleDataSource,
+        PokemonsTransformer<PokemonTransformer>>
+    > = injection.provideFavorite()
+
     let searchUseCase = Injection.init().provideSearch()
 
     let homePresenter = GetListPresenter(useCase: pokemonUseCase)
-    let favoritePresenter = FavoritePresenter(favoriteUseCase: favoriteUseCase)
+    let favoritePresenter = GetListPresenter(useCase: favoriteUseCase)
     let aboutPresenter = AboutPresenter()
     let searchPresenter = SearchPresenter(searchUseCase: searchUseCase)
 

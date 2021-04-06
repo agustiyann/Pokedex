@@ -34,10 +34,23 @@ struct ContentView: View {
     Interactor<
       String,
       [PokemonDomainModel],
-      GetPokemonsRepository<GetPokemonsLocaleDataSource, GetPokemonsRemoteDataSource, PokemonsTransformer<PokemonTransformer>>
-    >
-  >
-  @EnvironmentObject var favoritePresenter: FavoritePresenter
+      GetPokemonsRepository<
+        GetPokemonsLocaleDataSource,
+        GetPokemonsRemoteDataSource,
+        PokemonsTransformer<PokemonTransformer>>
+    >>
+
+  @EnvironmentObject var favoritePresenter: GetListPresenter<
+    String,
+    PokemonDomainModel,
+    Interactor<
+      String,
+      [PokemonDomainModel],
+      GetFavoritePokemonsRepository<
+        GetFavoritePokemonLocaleDataSource,
+        PokemonsTransformer<PokemonTransformer>>
+    >>
+
   @EnvironmentObject var aboutPresenter: AboutPresenter
   @EnvironmentObject var searchPresenter: SearchPresenter
 

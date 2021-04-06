@@ -52,6 +52,20 @@ final class Injection: NSObject {
     return Interactor(repository: repository) as! U
   }
 
+  func provideFavorite<U: UseCase>() -> U where U.Request == String, U.Response == [PokemonDomainModel] {
+
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let locale = GetFavoritePokemonLocaleDataSource(realm: appDelegate.realm)
+
+    let pokemonMapper = PokemonTransformer()
+    let mapper = PokemonsTransformer(pokemonMapper: pokemonMapper)
+    let repository = GetFavoritePokemonsRepository(
+      localDataSource: locale,
+      mapper: mapper)
+
+    return Interactor(repository: repository) as! U
+  }
+
   private func provideRepository() -> PokemonRepositoryProtocol {
     let realm = try? Realm()
     let locale: LocalDataSource = LocalDataSource.sharedInstance(realm)
@@ -69,10 +83,10 @@ final class Injection: NSObject {
     return InfoInteractor(repository: repository, pokemon: pokemon)
   }
 
-  func provideFavorite() -> FavoriteUseCase {
-    let repository = provideRepository()
-    return FavoriteInteractor(repository: repository)
-  }
+//  func provideFavorite() -> FavoriteUseCase {
+//    let repository = provideRepository()
+//    return FavoriteInteractor(repository: repository)
+//  }
 
   func provideSearch() -> SearchUseCase {
     let repository = provideRepository()

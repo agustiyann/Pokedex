@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Pokemon
+import Core
 
 struct BarView: View {
   var value: Int = 100
@@ -47,8 +48,8 @@ struct BarChartView: View {
   }
 }
 
-//struct BarView_Previews: PreviewProvider {
-//  static var previews: some View {
-//    BarChartView(pokemon: samplePokemon)
-//  }
-//}
+struct BarView_Previews: PreviewProvider {
+  static var previews: some View {
+    BarChartView(pokemon: samplePokemon)
+  }
+}

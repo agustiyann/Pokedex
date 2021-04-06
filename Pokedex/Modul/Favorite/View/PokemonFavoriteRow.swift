@@ -13,7 +13,7 @@ import Pokemon
 
 struct PokemonFavoriteRow: View {
 
-  var pokemon: PokemonModel
+  var pokemon: PokemonDomainModel
 
   var body: some View {
     VStack {
