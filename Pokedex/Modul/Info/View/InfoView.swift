@@ -161,23 +161,23 @@ extension InfoView {
       }
       .padding()
 
-//      if pokemon.favoriteState {
-//        Button(action: {
-//          self.presenter.updateFavoritePokemon()
-//        }, label: {
-//          Text("Remove From Favorite")
-//        })
-//        .buttonStyle(FilledButton())
-//        .padding(20)
-//      } else {
-//        Button(action: {
-//          self.presenter.updateFavoritePokemon()
-//        }, label: {
-//          Text("Add to Favorite")
-//        })
-//        .buttonStyle(FilledButton())
-//        .padding(20)
-//      }
+      if presenter.item?.favoriteState == true {
+        Button(action: {
+          self.presenter.updateFavoritePokemon(request: pokemon.id)
+        }, label: {
+          Text("Remove From Favorite")
+        })
+        .buttonStyle(FilledButton())
+        .padding(20)
+      } else {
+        Button(action: {
+          self.presenter.updateFavoritePokemon(request: pokemon.id)
+        }, label: {
+          Text("Add to Favorite")
+        })
+        .buttonStyle(FilledButton())
+        .padding(20)
+      }
 
       HStack { Spacer() }
     }
