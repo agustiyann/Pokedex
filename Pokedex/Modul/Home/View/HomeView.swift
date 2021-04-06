@@ -16,10 +16,10 @@ struct HomeView: View {
     PokemonDomainModel,
     Interactor<Any,
                [PokemonDomainModel],
-               GetPokemonsRepository<GetPokemonsLocaleDataSource, GetPokemonsRemoteDataSource, PokemonTransformer>
-    >
-  >
+               GetPokemonsRepository<GetPokemonsLocaleDataSource, GetPokemonsRemoteDataSource, PokemonTransformer>>>
+
   @AppStorage("grid") var gridState = false
+
   private let gridItems = [
     GridItem(.flexible()),
     GridItem(.flexible())
@@ -44,8 +44,10 @@ struct HomeView: View {
 //                      PokemonGridRowView(pokemon: pokemon)
 //                    }.buttonStyle(PlainButtonStyle())
                   ZStack {
-                    PokemonGridRowView(pokemon: pokemon)
-                  }.buttonStyle(PlainButtonStyle())
+                    linkBuilder(for: pokemon) {
+                      PokemonGridRowView(pokemon: pokemon)
+                    }.buttonStyle(PlainButtonStyle())
+                  }
                 }
               }.padding()
             } else {
@@ -57,8 +59,10 @@ struct HomeView: View {
 //                    }.buttonStyle(PlainButtonStyle())
 //                  }.padding(8)
                   ZStack {
-                    PokemonRowView(pokemon: pokemon)
-                  }.buttonStyle(PlainButtonStyle())
+                    linkBuilder(for: pokemon) {
+                      PokemonRowView(pokemon: pokemon)
+                    }.buttonStyle(PlainButtonStyle())
+                  }.padding(8)
                 }
               }
             }
@@ -76,6 +80,15 @@ struct HomeView: View {
         self.presenter.getList(request: nil)
       }
     }
+  }
+
+  func linkBuilder<Content: View>(
+      for pokemon: PokemonDomainModel,
+      @ViewBuilder content: () -> Content
+  ) -> some View {
+      NavigationLink(
+          destination: HomeRouter().makeInfoView(for: pokemon)
+      ) { content() }
   }
 
 }

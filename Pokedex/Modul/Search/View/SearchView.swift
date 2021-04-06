@@ -29,11 +29,11 @@ struct SearchView: View {
           ScrollView(.vertical, showsIndicators: false) {
             LazyVStack {
               ForEach(self.presenter.pokemons, id: \.id) { pokemon in
-                ZStack {
-                  self.presenter.linkBuilder(for: pokemon) {
-                    SearchRow(pokemon: pokemon)
-                  }.buttonStyle(PlainButtonStyle())
-                }.padding(8)
+//                ZStack {
+//                  self.presenter.linkBuilder(for: pokemon) {
+//                    SearchRow(pokemon: pokemon)
+//                  }.buttonStyle(PlainButtonStyle())
+//                }.padding(8)
               }
             }
           }

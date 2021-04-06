@@ -51,7 +51,7 @@ public struct GetPokemonsLocaleDataSource: LocaleDataSource {
     fatalError()
   }
 
-  public func update(id: Int, entity: PokemonModuleEntity) -> AnyPublisher<Bool, Error> {
+  public func update(id: String, entity: PokemonModuleEntity) -> AnyPublisher<Bool, Error> {
     fatalError()
   }
 }

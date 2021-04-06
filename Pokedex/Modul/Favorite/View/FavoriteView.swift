@@ -30,11 +30,11 @@ struct FavoriteView: View {
           ScrollView(.vertical, showsIndicators: false) {
             LazyVStack {
               ForEach(self.presenter.pokemonList, id: \.id) { pokemon in
-                ZStack {
-                  self.presenter.linkBuilder(for: pokemon) {
-                    PokemonFavoriteRow(pokemon: pokemon)
-                  }.buttonStyle(PlainButtonStyle())
-                }.padding(8)
+//                ZStack {
+//                  self.presenter.linkBuilder(for: pokemon) {
+//                    PokemonFavoriteRow(pokemon: pokemon)
+//                  }.buttonStyle(PlainButtonStyle())
+//                }.padding(8)
               }
             }
           }

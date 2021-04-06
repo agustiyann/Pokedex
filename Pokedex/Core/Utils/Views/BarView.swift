@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Pokemon
 
 struct BarView: View {
   var value: Int = 100
@@ -32,7 +33,7 @@ struct BarView: View {
 }
 
 struct BarChartView: View {
-  let pokemon: PokemonModel
+  let pokemon: PokemonDomainModel
   var body: some View {
     VStack(alignment: .leading) {
       BarView(value: pokemon.hp, title: "HP\t\t", color: .green)
@@ -46,8 +47,8 @@ struct BarChartView: View {
   }
 }
 
-struct BarView_Previews: PreviewProvider {
-  static var previews: some View {
-    BarChartView(pokemon: samplePokemon)
-  }
-}
+//struct BarView_Previews: PreviewProvider {
+//  static var previews: some View {
+//    BarChartView(pokemon: samplePokemon)
+//  }
+//}

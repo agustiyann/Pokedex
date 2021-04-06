@@ -38,11 +38,11 @@ class FavoritePresenter: ObservableObject {
       }).store(in: &cancellables)
   }
 
-  func linkBuilder<Content: View>(
-    for pokemon: PokemonModel,
-    @ViewBuilder content: () -> Content
-  ) -> some View {
-    NavigationLink(destination: router.makeInfoView(for: pokemon)) { content() }
-  }
+//  func linkBuilder<Content: View>(
+//    for pokemon: PokemonModel,
+//    @ViewBuilder content: () -> Content
+//  ) -> some View {
+//    NavigationLink(destination: router.makeInfoView(for: pokemon)) { content() }
+//  }
 
 }
