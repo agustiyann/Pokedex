@@ -87,5 +87,6 @@ struct ContentView: View {
       }
       .navigationBarTitle(selectedTab.title, displayMode: .large)
     }
+    .accentColor(.yellow)
   }
 }

@@ -63,7 +63,7 @@ struct HomeView: View {
             }
           }
 
-          ActionButton(icon: gridState ? "list.bullet" : "square.grid.2x2.fill", backgroundColor: .blue) {
+          ActionButton(icon: gridState ? "list.bullet" : "square.grid.2x2", backgroundColor: .yellow) {
             gridState.toggle()
           }
           .padding()
