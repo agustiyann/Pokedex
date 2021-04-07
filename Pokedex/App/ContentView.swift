@@ -15,13 +15,13 @@ enum TabTag {
   var title: String {
     switch self {
     case .home:
-      return "Pokedex"
+      return "Pokédex"
     case .search:
       return "Search"
     case .favorite:
       return "Favorite"
     case .profile:
-      return "About"
+      return "Profile"
     }
   }
 }
