@@ -12,7 +12,7 @@ import Pokemon
 
 struct SearchRow: View {
 
-  var pokemon: PokemonModel
+  var pokemon: PokemonDomainModel
 
   var body: some View {
     VStack {
@@ -65,8 +65,8 @@ extension SearchRow {
 
 }
 
-//struct SearchRow_Previews: PreviewProvider {
-//  static var previews: some View {
-//    SearchRow(pokemon: samplePokemon)
-//  }
-//}
+struct SearchRow_Previews: PreviewProvider {
+  static var previews: some View {
+    SearchRow(pokemon: samplePokemon)
+  }
+}

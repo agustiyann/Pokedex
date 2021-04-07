@@ -52,7 +52,12 @@ struct ContentView: View {
     >>
 
   @EnvironmentObject var aboutPresenter: AboutPresenter
-  @EnvironmentObject var searchPresenter: SearchPresenter
+  @EnvironmentObject var searchPresenter: SearchPresenter<
+    PokemonDomainModel,
+    Interactor<
+      String,
+      [PokemonDomainModel],
+      SearchPokemonsRepository<GetSearchPokemonLocaleDataSource, PokemonsTransformer<PokemonTransformer>>>>
 
   @State var selectedTab = TabTag.home
 

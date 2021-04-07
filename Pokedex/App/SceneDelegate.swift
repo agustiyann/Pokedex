@@ -38,12 +38,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         PokemonsTransformer<PokemonTransformer>>
     > = injection.provideFavorite()
 
-    let searchUseCase = Injection.init().provideSearch()
+    let searchUseCase: Interactor<
+      String,
+      [PokemonDomainModel],
+      SearchPokemonsRepository<
+        GetSearchPokemonLocaleDataSource,
+        PokemonsTransformer<PokemonTransformer>>
+    > = injection.provideSearch()
 
     let homePresenter = GetListPresenter(useCase: pokemonUseCase)
     let favoritePresenter = GetListPresenter(useCase: favoriteUseCase)
     let aboutPresenter = AboutPresenter()
-    let searchPresenter = SearchPresenter(searchUseCase: searchUseCase)
+    let searchPresenter = SearchPresenter(useCase: searchUseCase)
 
     let contentView = ContentView()
       .environmentObject(homePresenter)

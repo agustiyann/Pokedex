@@ -66,6 +66,20 @@ final class Injection: NSObject {
     return Interactor(repository: repository) as! U
   }
 
+  func provideSearch<U: UseCase>() -> U where U.Request == String, U.Response == [PokemonDomainModel] {
+
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let locale = GetSearchPokemonLocaleDataSource(realm: appDelegate.realm)
+
+    let pokemonMapper = PokemonTransformer()
+    let mapper = PokemonsTransformer(pokemonMapper: pokemonMapper)
+    let repository = SearchPokemonsRepository(
+      localDataSource: locale,
+      mapper: mapper)
+
+    return Interactor(repository: repository) as! U
+  }
+
   private func provideRepository() -> PokemonRepositoryProtocol {
     let realm = try? Realm()
     let locale: LocalDataSource = LocalDataSource.sharedInstance(realm)
