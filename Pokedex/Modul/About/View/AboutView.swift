@@ -24,7 +24,6 @@ struct AboutView: View {
         .frame(minWidth: 0, maxWidth: .infinity)
         .multilineTextAlignment(.center)
         .padding(.horizontal)
-
       Button(action: { linkEdit = true }, label: {
         Text("Edit")
       })
