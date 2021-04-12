@@ -1,9 +1,11 @@
 <h1 align="center">Pokédex</h1>
 
 <p align="center">
+  <a href="https://codecov.io/gh/agustiyann/Pokedex"><img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103"/></a>
   <a href="https://opensource.org/licenses/Apache-2.0"><img alt="GitHub" src="https://img.shields.io/github/license/agustiyann/Pokedex?color=informational"></a>
   <a href="https://github.com/agustiyann/Pokedex/actions/workflows/ios.yml"><img alt="Build Status" src="https://github.com/agustiyann/Pokedex/actions/workflows/ios.yml/badge.svg?branch=main"/></a>
-  <a href="https://codecov.io/gh/agustiyann/Pokedex"><img src="https://codecov.io/gh/agustiyann/Pokedex/branch/main/graph/badge.svg?token=XG0C09QDXU"/></a>
+  <a href="https://codebeat.co/projects/github-com-agustiyann-pokedex-main"><img alt="codebeat badge" src="https://codebeat.co/badges/272769a8-ac3f-4338-bced-dfac44eb9360" /></a>
+  <a href="https://github.com/agustiyann"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-agustiyann-%2300b894?logo=github" /></a>
 </p>
 
 <p align="center">
