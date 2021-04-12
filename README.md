@@ -1,9 +1,7 @@
 <h1 align="center">Pokédex</h1>
 
-[![]()]()
-
 <p align="center">
-  <a href="https://codecov.io/gh/agustiyann/Pokedex"><img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103"/></a>
+  <a href="https://github.com/ellerbrock/open-source-badges/"><img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103"/></a>
   <a href="https://opensource.org/licenses/Apache-2.0"><img alt="GitHub" src="https://img.shields.io/github/license/agustiyann/Pokedex?color=informational"></a>
   <a href="https://github.com/agustiyann/Pokedex/actions/workflows/ios.yml"><img alt="Build Status" src="https://github.com/agustiyann/Pokedex/actions/workflows/ios.yml/badge.svg?branch=main"/></a>
   <a href="https://www.codacy.com/gh/agustiyann/Pokedex/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=agustiyann/Pokedex&amp;utm_campaign=Badge_Grade"><img src="https://app.codacy.com/project/badge/Grade/2b3f2965e1344278b7bc5e8e9c444f14"/></a>
